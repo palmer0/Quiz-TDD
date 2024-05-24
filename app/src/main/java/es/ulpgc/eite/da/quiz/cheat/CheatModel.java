@@ -5,32 +5,30 @@ package es.ulpgc.eite.da.quiz.cheat;
  */
 public class CheatModel implements CheatContract.Model {
 
-  //public static String TAG = CheatModel.class.getSimpleName();
   public static String TAG = "Quiz.CheatModel";
 
-  private String falseLabel, trueLabel;
-
+  private String falseAnswerText, trueAnswerText;
 
   public CheatModel() {
 
   }
 
-  public void setFalseLabel(String label) {
-    falseLabel = label;
+  public void setFalseAnswerText(String text) {
+    falseAnswerText = text;
   }
 
-  public void setTrueLabel(String label) {
-    trueLabel = label;
+  public void setTrueAnswerText(String text) {
+    trueAnswerText = text;
   }
 
   @Override
-  public String getFalseLabel() {
-    return falseLabel;
+  public String getFalseAnswerText() {
+    return falseAnswerText;
   }
 
 
   @Override
-  public String getTrueLabel() {
-    return trueLabel;
+  public String getTrueAnswerText() {
+    return trueAnswerText;
   }
 }

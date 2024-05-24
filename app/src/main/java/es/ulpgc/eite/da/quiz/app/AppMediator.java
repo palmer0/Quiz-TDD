@@ -71,9 +71,4 @@ public class AppMediator {
     this.questionToCheatState = state;
   }
 
-  /*
-  public void resetCheatToQuestionState() {
-    cheatToQuestionState = null;
-  }
-  */
 }

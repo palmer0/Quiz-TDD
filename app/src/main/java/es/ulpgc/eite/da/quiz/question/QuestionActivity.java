@@ -37,7 +37,7 @@ public class QuestionActivity
     questionField = findViewById(R.id.questionText);
     resultField = findViewById(R.id.resultText);
 
-    Log.e(TAG, "onCreate()");
+    Log.e(TAG, "onCreate");
 
     trueButton.setText(getTrueButtonLabel());
     falseButton.setText(getFalseButtonLabel());
@@ -84,30 +84,23 @@ public class QuestionActivity
     });
     */
 
-
-    /*
-    if(savedInstanceState == null) {
-      AppMediator.resetInstance();
-    }
-    */
-
     // do the setup
     QuestionScreen.configure(this);
 
+    // do some work
     if(savedInstanceState  == null) {
       presenter.onCreateCalled();
 
     }else{
       presenter.onRecreateCalled();
     }
-
   }
 
 
   @Override
   protected void onResume() {
     super.onResume();
-    Log.e(TAG, "onResume()");
+    //Log.e(TAG, "onResume");
 
     // do some work
     presenter.onResumeCalled();
@@ -117,15 +110,15 @@ public class QuestionActivity
   @Override
   protected void onPause() {
     super.onPause();
-    Log.e(TAG, "onPause()");
 
+    //Log.e(TAG, "onPause");
   }
 
   @Override
   protected void onDestroy() {
     super.onDestroy();
-    Log.e(TAG, "onDestroy()");
 
+    //Log.e(TAG, "onDestroy");
   }
 
 
@@ -143,7 +136,7 @@ public class QuestionActivity
 
   @Override
   public void displayQuestionData(QuestionViewModel viewModel) {
-    //Log.e(TAG, "displayQuestionData()");
+    Log.e(TAG, "displayQuestionData");
 
     // deal with the data
     questionField.setText(viewModel.questionText);
@@ -172,17 +165,5 @@ public class QuestionActivity
   private String getTrueButtonLabel() {
     return getResources().getString(R.string.true_label);
   }
-
-  /*
-  @Override
-  public String getIncorrectLabel() {
-    return getResources().getString(R.string.incorrect_label);
-  }
-
-  @Override
-  public String getCorrectLabel() {
-    return getResources().getString(R.string.correct_label);
-  }
-  */
 
 }

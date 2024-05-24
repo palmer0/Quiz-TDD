@@ -11,7 +11,6 @@ import es.ulpgc.eite.da.quiz.app.QuestionToCheatState;
 
 public class QuestionPresenter implements QuestionContract.Presenter {
 
-  //public static String TAG = QuestionPresenter.class.getSimpleName();
   public static String TAG = "Quiz.QuestionPresenter";
 
   private WeakReference<QuestionContract.View> view;
@@ -21,12 +20,11 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
   public QuestionPresenter(AppMediator mediator) {
     this.mediator = mediator;
-    //state = mediator.getQuestionState();
   }
 
   @Override
   public void onCreateCalled() {
-    Log.e(TAG, "onCreateCalled()");
+    Log.e(TAG, "onCreateCalled");
 
     state = new QuestionState();
     mediator.setQuestionState(state);
@@ -34,18 +32,17 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
   @Override
   public void onRecreateCalled() {
-    Log.e(TAG, "onRecreateCalled()");
+    Log.e(TAG, "onRecreateCalled");
 
     state = mediator.getQuestionState();
   }
 
   @Override
   public void onResumeCalled() {
-    //Log.e(TAG, "onResumeCalled()");
+    Log.e(TAG, "onResumeCalled");
 
     // set passed state
     CheatToQuestionState savedState =  mediator.getCheatToQuestionState();
-    //CheatToQuestionState savedState = getDataFromCheatScreen();
     if(savedState != null) {
 
         if(savedState.cheated){
@@ -67,9 +64,9 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     boolean currentAnswer = model.getCurrentAnswer();
 
     if(currentAnswer == userAnswer) {
-      state.resultText = model.getCorrectLabel();
+      state.resultText = model.getCorrectResultText();
     } else {
-      state.resultText = model.getIncorrectLabel();
+      state.resultText = model.getIncorrectResultText();
     }
 
     state.falseButton = false;
@@ -100,7 +97,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
   public void cheatButtonClicked() {
     boolean answer = model.getCurrentAnswer();
     QuestionToCheatState newState = new QuestionToCheatState(answer);
-    //passDataToCheatScreen(newState);
     mediator.setQuestionToCheatState(newState);
 
     view.get().navigateToCheatScreen();
@@ -108,7 +104,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
   @Override
   public void nextButtonClicked() {
-    //Log.e(TAG, "nextButtonClicked()");
+    //Log.e(TAG, "nextButtonClicked");
 
     state.quizIndex++;
     model.incrQuizIndex();
@@ -123,14 +119,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
     view.get().displayQuestionData(state);
   }
-
-//  private void passDataToCheatScreen(QuestionToCheatState state) {
-//    mediator.setQuestionToCheatState(state);
-//  }
-
-//  private CheatToQuestionState getDataFromCheatScreen() {
-//    return mediator.getCheatToQuestionState();
-//  }
 
   @Override
   public void injectView(WeakReference<QuestionContract.View> view) {

@@ -2,7 +2,6 @@ package es.ulpgc.eite.da.quiz.question;
 
 public class QuestionModel implements QuestionContract.Model {
 
-  //public static String TAG = QuestionModel.class.getSimpleName();
   public static String TAG = "Quiz.QuestionModel";
 
   private String[] quizQuestions = {
@@ -53,25 +52,25 @@ public class QuestionModel implements QuestionContract.Model {
 
   private int quizIndex = 0;
 
-  private String correctLabel, incorrectLabel;
+  private String correctResultText, incorrectResultText;
 
 
   @Override
-  public String getCorrectLabel() {
-    return correctLabel;
+  public String getCorrectResultText() {
+    return correctResultText;
   }
 
   @Override
-  public String getIncorrectLabel() {
-    return incorrectLabel;
+  public String getIncorrectResultText() {
+    return incorrectResultText;
   }
 
-  public void setCorrectLabel(String label) {
-    correctLabel = label;
+  public void setCorrectResultText(String text) {
+    correctResultText = text;
   }
 
-  public void setIncorrectLabel(String label) {
-    incorrectLabel = label;
+  public void setIncorrectResultText(String text) {
+    incorrectResultText = text;
   }
 
   @Override

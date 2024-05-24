@@ -51,6 +51,10 @@
             android:layout_weight="1"
             android:text="Button" />
 
+        <Space
+            android:layout_width="24sp"
+            android:layout_height="wrap_content"/>
+
         <Button
             android:id="@+id/falseButton"
             android:layout_width="wrap_content"
@@ -74,6 +78,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Button" />
+
+        <Space
+            android:layout_width="24sp"
+            android:layout_height="wrap_content"/>
 
         <Button
             android:id="@+id/nextButton"

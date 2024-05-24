@@ -5,36 +5,36 @@ import java.lang.ref.WeakReference;
 
 public interface CheatContract {
 
-  interface View {
-    void injectPresenter(Presenter presenter);
+    interface View {
+        void injectPresenter(Presenter presenter);
 
-    void displayCheatData(CheatViewModel viewModel);
-    void finishView();
-    //String getFalseLabel();
-    //String getTrueLabel();
-  }
+        void displayCheatData(CheatViewModel viewModel);
 
-  interface Presenter {
-    void injectView(WeakReference<View> view);
-    void injectModel(Model model);
+        void finishView();
+    }
 
-    void yesButtonClicked();
-    void noButtonClicked();
+    interface Presenter {
+        void injectView(WeakReference<View> view);
 
-    //void onCreateCalled();
-    void onResumeCalled();
+        void injectModel(Model model);
 
-    void onCreateCalled();
+        void yesButtonClicked();
 
-    void onRecreateCalled();
+        void noButtonClicked();
 
-      void onBackPressed();
-      //void onDestroyCalled();
-  }
+        void onResumeCalled();
 
-  interface Model {
+        void onCreateCalled();
 
-    String getFalseLabel();
-    String getTrueLabel();
-  }
+        void onRecreateCalled();
+
+        void onBackPressed();
+    }
+
+    interface Model {
+
+        String getFalseAnswerText();
+
+        String getTrueAnswerText();
+    }
 }

@@ -390,18 +390,6 @@ public class QuestionActivityTests {
             // Press Cheat button
             cheatButton.performClick();
 
-            /*
-            Intent expectedIntent = new Intent(activity, CheatActivity.class);
-            Intent actualIntent = shadowOf(activity).getNextStartedActivity();
-
-            // CheatActivity should start with QuestionActivity intent
-            assertEquals(expectedIntent.getComponent(), actualIntent.getComponent());
-            assertEquals(
-                quizAnswers[0],
-                actualIntent.getIntExtra(CheatActivity.EXTRA_ANSWER, 0)
-            );
-            */
-
             QuestionToCheatState nextState =
                     AppMediator.getInstance().getQuestionToCheatState();
 
@@ -423,17 +411,6 @@ public class QuestionActivityTests {
             Button falseButton = activity.findViewById(R.id.falseButton);
             Button cheatButton = activity.findViewById(R.id.cheatButton);
             Button nextButton = activity.findViewById(R.id.nextButton);
-
-
-            /*
-            // Return result No from CheatActivity
-            Intent resultData = new Intent();
-            resultData.putExtra(CheatActivity.EXTRA_CHEATED, false);
-
-            // Resume QuestionActivity calling onActivityResult
-            activity.onActivityResult(QuestionActivity.CHEAT_REQUEST, RESULT_OK, resultData);
-
-            */
 
             CheatToQuestionState savedState =
                     AppMediator.getInstance().getCheatToQuestionState();
@@ -475,16 +452,6 @@ public class QuestionActivityTests {
             Button falseButton = activity.findViewById(R.id.falseButton);
             Button cheatButton = activity.findViewById(R.id.cheatButton);
             Button nextButton = activity.findViewById(R.id.nextButton);
-
-            /*
-            // Return result Yes from CheatActivity
-            Intent resultData = new Intent();
-            resultData.putExtra(CheatActivity.EXTRA_CHEATED, true);
-
-            // Resume QuestionActivity calling onActivityResult
-            activity.onActivityResult(QuestionActivity.CHEAT_REQUEST, RESULT_OK, resultData);
-            */
-
 
             // Verify the second question is shown
             assertEquals(quizQuestions[1], questionTextView.getText().toString());

@@ -20,8 +20,8 @@ public class CheatScreen {
     CheatContract.Presenter presenter = new CheatPresenter(mediator);
 
     CheatModel model = new CheatModel();
-    model.setTrueLabel(context.get().getString(R.string.true_label));
-    model.setFalseLabel(context.get().getString(R.string.false_label));
+    model.setTrueAnswerText(context.get().getString(R.string.true_text));
+    model.setFalseAnswerText(context.get().getString(R.string.false_text));
 
     presenter.injectView(new WeakReference<>(view));
     presenter.injectModel(model);

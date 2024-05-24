@@ -31,23 +31,18 @@ public class QuizSteps {
 
   }
 
-  public void mostrarPregunta(String q) {
+  public void mostrarPregunta(String question) {
     onView(withId(R.id.questionText)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.questionText)).check(matches(withText(q)));
+    onView(withId(R.id.questionText)).check(matches(withText(question)));
   }
 
-  public void ocultarResultado(String r) {
-    //onView(withId(R.id.questionText)).check(matches(not(isCompletelyDisplayed())));
-    //onView(withId(R.id.replyText)).check(matches(isCompletelyDisplayed()));
-    //onView(withId(R.id.replyText)).check(matches(withText("???")));
-    onView(withId(R.id.resultText)).check(matches(withText(r)));
+  public void ocultarResultadoMostrandoTexto(String text) {
+    onView(withId(R.id.resultText)).check(matches(withText(text)));
   }
 
 
-  public void ocultarRespuesta(String r) {
-    //onView(withId(R.id.answerText)).check(matches(isCompletelyDisplayed()));
-    //onView(withId(R.id.answerText)).check(matches(withText("???")));
-    onView(withId(R.id.answerText)).check(matches(withText(r)));
+  public void ocultarRespuestaMostrandoTexto(String text) {
+    onView(withId(R.id.answerText)).check(matches(withText(text)));
   }
 
   public void mostrarBotonesTrueYFalseYCheatActivados() {
@@ -59,20 +54,6 @@ public class QuizSteps {
   public void mostrarBotonNextDesactivado() {
     onView(withId(R.id.nextButton)).check(matches(not(isEnabled())));
   }
-
-//  public void pulsarBoton(String b, String tb) {
-//
-//    //String tb = activity.getString(R.string.true_button_text);
-//    //int button = (b.equals("True")) ? R.id.trueButton : R.id.falseButton;
-//    int button = (b.equals(tb)) ? R.id.trueButton : R.id.falseButton;
-//    onView(withId(button)).check(matches(isCompletelyDisplayed()));
-//    onView(withId(button)).perform(click());
-//
-//    try {
-//      Thread.sleep(DELAY_IN_SECS);
-//    } catch (InterruptedException e) {
-//    }
-//  }
 
 
   public void pulsarBoton(int button) {
@@ -86,15 +67,56 @@ public class QuizSteps {
     }
   }
 
-//  public void mostrarResultadoARespuesta(String r, String a) {
-//    onView(withId(R.id.replyText)).check(matches(isCompletelyDisplayed()));
-//    onView(withId(R.id.replyText)).check(matches(withText(a)));
-//  }
+  /*
+  public void pulsarBotonYes() {
+
+    onView(withId(R.id.yesButton)).check(matches(isCompletelyDisplayed()));
+    onView(withId(R.id.yesButton)).perform(click());
+
+    try {
+      Thread.sleep(DELAY_IN_SECS);
+    } catch (InterruptedException e) {
+    }
+  }
+
+  public void pulsarBotonCheat() {
+
+    onView(withId(R.id.cheatButton)).check(matches(isCompletelyDisplayed()));
+    onView(withId(R.id.cheatButton)).perform(click());
+
+    try {
+      Thread.sleep(DELAY_IN_SECS);
+    } catch (InterruptedException e) {
+    }
+  }
+
+  public void pulsarBotonNo() {
+
+    onView(withId(R.id.noButton)).check(matches(isCompletelyDisplayed()));
+    onView(withId(R.id.noButton)).perform(click());
+
+    try {
+      Thread.sleep(DELAY_IN_SECS);
+    } catch (InterruptedException e) {
+    }
+  }
 
 
-  public void mostrarResultadoARespuesta(String reply) {
+  public void pulsarBotonNext() {
+
+    onView(withId(R.id.nextButton)).check(matches(isCompletelyDisplayed()));
+    onView(withId(R.id.nextButton)).perform(click());
+
+    try {
+      Thread.sleep(DELAY_IN_SECS);
+    } catch (InterruptedException e) {
+    }
+  }
+  */
+
+  public void mostrarResultadoARespuesta(String result) {
     onView(withId(R.id.resultText)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.resultText)).check(matches(withText(reply)));
+    onView(withId(R.id.resultText)).check(matches(withText(result)));
   }
 
 
@@ -109,16 +131,6 @@ public class QuizSteps {
     onView(withId(R.id.nextButton)).check(matches(isEnabled()));
   }
 
-  public void pulsarBotonCheat() {
-
-    onView(withId(R.id.cheatButton)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.cheatButton)).perform(click());
-
-    try {
-      Thread.sleep(DELAY_IN_SECS);
-    } catch (InterruptedException e) {
-    }
-  }
 
   public void iniciarPantallaCheat() {
     //getInstrumentation().waitForIdleSync();
@@ -131,8 +143,6 @@ public class QuizSteps {
 
   public void mostrarMensajeWarning(String w) {
     onView(withId(R.id.confirmationText)).check(matches(isCompletelyDisplayed()));
-    //onView(withId(R.id.confirmationText))
-    //    .check(matches(withText("Are you sure?")));
     onView(withId(R.id.confirmationText)).check(matches(withText(w)));
   }
 
@@ -141,16 +151,6 @@ public class QuizSteps {
     onView(withId(R.id.noButton)).check(matches(isEnabled()));
   }
 
-  public void pulsarBotonNo() {
-
-    onView(withId(R.id.noButton)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.noButton)).perform(click());
-
-    try {
-      Thread.sleep(DELAY_IN_SECS);
-    } catch (InterruptedException e) {
-    }
-  }
 
   public void finalizarPantallaCheat() {
     try {
@@ -165,22 +165,6 @@ public class QuizSteps {
     } catch (InterruptedException e) {
     }
   }
-
-  public void pulsarBotonYes() {
-
-    onView(withId(R.id.yesButton)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.yesButton)).perform(click());
-
-    try {
-      Thread.sleep(DELAY_IN_SECS);
-    } catch (InterruptedException e) {
-    }
-  }
-
-//  public void mostrarRespuestaAPregunta(String a, String q) {
-//    onView(withId(R.id.answerText)).check(matches(isCompletelyDisplayed()));
-//    onView(withId(R.id.answerText)).check(matches(withText(a)));
-//  }
 
 
   public void mostrarRespuestaAPregunta(String answer) {
@@ -203,17 +187,6 @@ public class QuizSteps {
 
     //getInstrumentation().waitForIdleSync();
     pressBack();
-  }
-
-  public void pulsarBotonNext() {
-
-    onView(withId(R.id.nextButton)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.nextButton)).perform(click());
-
-    try {
-      Thread.sleep(DELAY_IN_SECS);
-    } catch (InterruptedException e) {
-    }
   }
 
   public void girarPantalla(int orientation) {

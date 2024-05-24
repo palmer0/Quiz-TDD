@@ -58,13 +58,10 @@ public class CheatActivity
     // do the setup
     CheatScreen.configure(this);
 
-    /*
     // do some work
-    presenter.onCreateCalled();
-    */
-
     if(savedInstanceState  == null) {
       presenter.onCreateCalled();
+      
     }else{
       presenter.onRecreateCalled();
     }
@@ -93,14 +90,10 @@ public class CheatActivity
     //presenter.onDestroyCalled();
   }
 
-  @Override
-  public void injectPresenter(CheatContract.Presenter presenter) {
-    this.presenter = presenter;
-  }
 
   @Override
   public void displayCheatData(CheatViewModel viewModel) {
-    Log.e(TAG, "displayCheatData()");
+    Log.e(TAG, "displayCheatData");
 
     // deal with the data
     answerField.setText(viewModel.answerText);
@@ -126,16 +119,9 @@ public class CheatActivity
     return getResources().getString(R.string.confirmation_text);
   }
 
-  /*
-  @Override
-  public String getFalseLabel() {
-    return getResources().getString(R.string.false_label);
-  }
-
 
   @Override
-  public String getTrueLabel() {
-    return getResources().getString(R.string.true_label);
+  public void injectPresenter(CheatContract.Presenter presenter) {
+    this.presenter = presenter;
   }
-  */
 }

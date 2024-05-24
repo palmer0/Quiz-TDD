@@ -9,8 +9,6 @@ public interface QuestionContract {
     void injectPresenter(Presenter presenter);
 
     void displayQuestionData(QuestionViewModel viewModel);
-    //String getIncorrectLabel();
-    //String getCorrectLabel();
     void navigateToCheatScreen();
 
   }
@@ -32,8 +30,8 @@ public interface QuestionContract {
 
   interface Model {
 
-    String getCorrectLabel();
-    String getIncorrectLabel();
+    String getCorrectResultText();
+    String getIncorrectResultText();
 
     String getCurrentQuestion();
     boolean getCurrentAnswer();
