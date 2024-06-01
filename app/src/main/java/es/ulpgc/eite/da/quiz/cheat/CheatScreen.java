@@ -12,21 +12,21 @@ import es.ulpgc.eite.da.quiz.app.AppMediator;
 public class CheatScreen {
 
 
-  public static void configure(CheatContract.View view) {
+    public static void configure(CheatContract.View view) {
 
-    WeakReference<FragmentActivity> context = new WeakReference<>((FragmentActivity) view);
+        WeakReference<FragmentActivity> context = new WeakReference<>((FragmentActivity) view);
 
-    AppMediator mediator = AppMediator.getInstance();
-    CheatContract.Presenter presenter = new CheatPresenter(mediator);
+        AppMediator mediator = AppMediator.getInstance();
+        CheatContract.Presenter presenter = new CheatPresenter(mediator);
 
-    CheatModel model = new CheatModel();
-    model.setTrueAnswerText(context.get().getString(R.string.true_text));
-    model.setFalseAnswerText(context.get().getString(R.string.false_text));
+        CheatModel model = new CheatModel();
+        model.setTrueAnswerText(context.get().getString(R.string.true_text));
+        model.setFalseAnswerText(context.get().getString(R.string.false_text));
 
-    presenter.injectView(new WeakReference<>(view));
-    presenter.injectModel(model);
-    view.injectPresenter(presenter);
+        presenter.injectView(new WeakReference<>(view));
+        presenter.injectModel(model);
+        view.injectPresenter(presenter);
 
-  }
+    }
 
 }

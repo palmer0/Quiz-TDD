@@ -1,17 +1,16 @@
 package es.ulpgc.eite.da.quiz.question;
 
-import java.util.Objects;
-
 public class QuestionViewModel {
 
-  public String questionText;
-  public String resultText = "";
+    public String questionText;
+    //public String resultText = "";
 
-  public boolean falseButton = true;
-  public boolean trueButton = true;
-  public boolean cheatButton = true;
-  public boolean nextButton = false;
-
+    //  public boolean falseButton = true;
+//  public boolean trueButton = true;
+//  public boolean cheatButton = true;
+    public boolean nextButton = false;
+    public boolean isLastQuestion = false;
+    public boolean resultIsCorrect = false;
 
   /*
   @Override

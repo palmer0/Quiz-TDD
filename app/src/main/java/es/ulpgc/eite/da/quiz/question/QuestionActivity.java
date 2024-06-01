@@ -3,7 +3,6 @@ package es.ulpgc.eite.da.quiz.question;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,38 +15,38 @@ import es.ulpgc.eite.da.quiz.cheat.CheatActivity;
 public class QuestionActivity
     extends AppCompatActivity implements QuestionContract.View {
 
-  public static String TAG = "Quiz.QuestionActivity";
+    public static String TAG = "Quiz.QuestionActivity";
 
-  QuestionContract.Presenter presenter;
+    QuestionContract.Presenter presenter;
 
-  TextView questionField, resultField;
-  Button trueButton, falseButton, cheatButton, nextButton;
+    TextView questionField, resultField;
+    Button trueButton, falseButton, cheatButton, nextButton;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_question);
-    setTitle(R.string.question_screen_title);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_question);
+        setTitle(R.string.question_screen_title);
 
 
-    trueButton = findViewById(R.id.trueButton);
-    falseButton = findViewById(R.id.falseButton);
-    cheatButton = findViewById(R.id.cheatButton);
-    nextButton = findViewById(R.id.nextButton);
-    questionField = findViewById(R.id.questionText);
-    resultField = findViewById(R.id.resultText);
+        trueButton = findViewById(R.id.trueButton);
+        falseButton = findViewById(R.id.falseButton);
+        cheatButton = findViewById(R.id.cheatButton);
+        nextButton = findViewById(R.id.nextButton);
+        questionField = findViewById(R.id.questionText);
+        resultField = findViewById(R.id.resultText);
 
-    Log.e(TAG, "onCreate");
+        Log.e(TAG, "onCreate");
 
-    trueButton.setText(getTrueButtonLabel());
-    falseButton.setText(getFalseButtonLabel());
-    cheatButton.setText(getCheatButtonLabel());
-    nextButton.setText(getNextButtonLabel());
+        trueButton.setText(getTrueButtonLabel());
+        falseButton.setText(getFalseButtonLabel());
+        cheatButton.setText(getCheatButtonLabel());
+        nextButton.setText(getNextButtonLabel());
 
-    trueButton.setOnClickListener(v -> presenter.trueButtonClicked());
-    falseButton.setOnClickListener(v -> presenter.falseButtonClicked());
-    cheatButton.setOnClickListener(v -> presenter.cheatButtonClicked());
-    nextButton.setOnClickListener(v -> presenter.nextButtonClicked());
+        trueButton.setOnClickListener(v -> presenter.trueButtonClicked());
+        falseButton.setOnClickListener(v -> presenter.falseButtonClicked());
+        cheatButton.setOnClickListener(v -> presenter.cheatButtonClicked());
+        nextButton.setOnClickListener(v -> presenter.nextButtonClicked());
 
 
     /*
@@ -84,87 +83,118 @@ public class QuestionActivity
     });
     */
 
-    // do the setup
-    QuestionScreen.configure(this);
+        // do the setup
+        QuestionScreen.configure(this);
 
-    // do some work
-    if(savedInstanceState  == null) {
-      presenter.onCreateCalled();
+        // do some work
+        if (savedInstanceState == null) {
+            presenter.onCreateCalled();
 
-    }else{
-      presenter.onRecreateCalled();
+        } else {
+            presenter.onRecreateCalled();
+        }
     }
-  }
 
 
-  @Override
-  protected void onResume() {
-    super.onResume();
-    //Log.e(TAG, "onResume");
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //Log.e(TAG, "onResume");
 
-    // do some work
-    presenter.onResumeCalled();
-  }
-
-
-  @Override
-  protected void onPause() {
-    super.onPause();
-
-    //Log.e(TAG, "onPause");
-  }
-
-  @Override
-  protected void onDestroy() {
-    super.onDestroy();
-
-    //Log.e(TAG, "onDestroy");
-  }
+        // do some work
+        presenter.onResumeCalled();
+    }
 
 
-  @Override
-  public void navigateToCheatScreen() {
-    Intent intent = new Intent(this, CheatActivity.class);
-    //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-    startActivity(intent);
-  }
+    @Override
+    protected void onPause() {
+        super.onPause();
 
-  @Override
-  public void displayQuestionData(QuestionViewModel viewModel) {
-    Log.e(TAG, "displayQuestionData");
+        //Log.e(TAG, "onPause");
+    }
 
-    // deal with the data
-    questionField.setText(viewModel.questionText);
-    resultField.setText(viewModel.resultText);
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
-    trueButton.setEnabled(viewModel.trueButton);
-    falseButton.setEnabled(viewModel.falseButton);
-    cheatButton.setEnabled(viewModel.cheatButton);
-    nextButton.setEnabled(viewModel.nextButton);
-
-  }
+        //Log.e(TAG, "onDestroy");
+    }
 
 
-  private String getCheatButtonLabel() {
-    return getResources().getString(R.string.cheat_label);
-  }
+    @Override
+    public void navigateToCheatScreen() {
+        Intent intent = new Intent(this, CheatActivity.class);
+        //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
-  private String getNextButtonLabel() {
-    return getResources().getString(R.string.next_label);
-  }
+    @Override
+    public void displayQuestionData(QuestionViewModel viewModel) {
+        Log.e(TAG, "displayQuestionData");
 
-  private String getFalseButtonLabel() {
-    return getResources().getString(R.string.false_label);
-  }
+        // deal with the data
+        questionField.setText(viewModel.questionText);
+        //resultField.setText(viewModel.resultText);
+        resultField.setText(getString(R.string.empty_text));
 
-  private String getTrueButtonLabel() {
-    return getResources().getString(R.string.true_label);
-  }
+        if (viewModel.nextButton || viewModel.isLastQuestion) {
+            resultField.setText(
+                viewModel.resultIsCorrect
+                    ? getCorrectResultText()
+                    : getIncorrectResultText()
+            );
+
+        }
 
 
-  @Override
-  public void injectPresenter(QuestionContract.Presenter presenter) {
-    this.presenter = presenter;
-  }
+//      trueButton.setEnabled(viewModel.trueButton);
+//      falseButton.setEnabled(viewModel.falseButton);
+//      cheatButton.setEnabled(viewModel.cheatButton);
+
+
+        if (viewModel.isLastQuestion) {
+            trueButton.setEnabled(false);
+            falseButton.setEnabled(false);
+            cheatButton.setEnabled(false);
+            nextButton.setEnabled(false);
+
+        } else {
+            trueButton.setEnabled(!viewModel.nextButton);
+            falseButton.setEnabled(!viewModel.nextButton);
+            cheatButton.setEnabled(!viewModel.nextButton);
+            nextButton.setEnabled(viewModel.nextButton);
+        }
+
+    }
+
+    public String getCorrectResultText() {
+        return getString(R.string.correct_text);
+    }
+
+    public String getIncorrectResultText() {
+        return getString(R.string.incorrect_text);
+    }
+
+    private String getCheatButtonLabel() {
+        return getResources().getString(R.string.cheat_label);
+    }
+
+    private String getNextButtonLabel() {
+        return getResources().getString(R.string.next_label);
+    }
+
+    private String getFalseButtonLabel() {
+        return getResources().getString(R.string.false_label);
+    }
+
+    private String getTrueButtonLabel() {
+        return getResources().getString(R.string.true_label);
+    }
+
+
+    @Override
+    public void injectPresenter(QuestionContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
 
 }

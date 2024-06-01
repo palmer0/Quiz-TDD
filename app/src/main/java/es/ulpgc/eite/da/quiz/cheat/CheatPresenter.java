@@ -11,45 +11,45 @@ import es.ulpgc.eite.da.quiz.app.QuestionToCheatState;
 
 public class CheatPresenter implements CheatContract.Presenter {
 
-  public static String TAG = "Quiz.CheatPresenter";
+    public static String TAG = "Quiz.CheatPresenter";
 
-  private WeakReference<CheatContract.View> view;
-  private CheatContract.Model model;
-  private CheatState state;
-  private AppMediator mediator;
+    private WeakReference<CheatContract.View> view;
+    private CheatContract.Model model;
+    private CheatState state;
+    private AppMediator mediator;
 
-  public CheatPresenter(AppMediator mediator) {
-    this.mediator = mediator;
-  }
+    public CheatPresenter(AppMediator mediator) {
+        this.mediator = mediator;
+    }
 
-  @Override
-  public void onCreateCalled() {
-    Log.e(TAG, "onCreateCalled");
+    @Override
+    public void onCreateCalled() {
+        Log.e(TAG, "onCreateCalled");
 
-    state = new CheatState();
-    mediator.setCheatState(state);
+        state = new CheatState();
+        mediator.setCheatState(state);
 
-  }
+    }
 
-  @Override
-  public void onRecreateCalled() {
-    Log.e(TAG, "onRecreateCalled");
+    @Override
+    public void onRecreateCalled() {
+        Log.e(TAG, "onRecreateCalled");
 
-    state = mediator.getCheatState();
-  }
+        state = mediator.getCheatState();
+    }
 
-  @Override
-  public void onResumeCalled() {
-    Log.e(TAG, "onResumeCalled");
+    @Override
+    public void onResumeCalled() {
+        Log.e(TAG, "onResumeCalled");
 
-    view.get().displayCheatData(state);
-  }
+        view.get().displayCheatData(state);
+    }
 
-  @Override
-  public void onBackPressed() {
-    Log.e(TAG, "onBackPressed");
+    @Override
+    public void onBackPressed() {
+        Log.e(TAG, "onBackPressed");
 
-    //mediator.resetCheatToQuestionState();
+        //mediator.resetCheatToQuestionState();
 
     /*if(state.cheated) {
       state.cheated = false;
@@ -57,7 +57,7 @@ public class CheatPresenter implements CheatContract.Presenter {
       CheatToQuestionState newState = new CheatToQuestionState(true);
       mediator.setCheatToQuestionState(newState);
     }*/
-  }
+    }
 
   /*
   @Override
@@ -70,45 +70,45 @@ public class CheatPresenter implements CheatContract.Presenter {
   */
 
 
-  @Override
-  public void yesButtonClicked() {
+    @Override
+    public void yesButtonClicked() {
 
-    // set passed state
-    QuestionToCheatState savedState = mediator.getQuestionToCheatState();
-    if(savedState != null) {
+        // set passed state
+        QuestionToCheatState savedState = mediator.getQuestionToCheatState();
+        if (savedState != null) {
 
-      //state.cheated = true;
+            //state.cheated = true;
 
-      CheatToQuestionState newState = new CheatToQuestionState(true);
-      mediator.setCheatToQuestionState(newState);
-      
-      if(savedState.answer) {
-        state.answerText = model.getTrueAnswerText();
-      } else {
-        state.answerText = model.getFalseAnswerText();
-      }
+            CheatToQuestionState newState = new CheatToQuestionState(true);
+            mediator.setCheatToQuestionState(newState);
 
-      state.yesButton = false;
-      state.noButton = false;
+            if (savedState.answer) {
+                state.answerText = model.getTrueAnswerText();
+            } else {
+                state.answerText = model.getFalseAnswerText();
+            }
 
-      view.get().displayCheatData(state);
+            state.yesButton = false;
+            state.noButton = false;
+
+            view.get().displayCheatData(state);
+        }
     }
-  }
 
-  @Override
-  public void noButtonClicked() {
-    CheatToQuestionState newState = new CheatToQuestionState(false);
-    mediator.setCheatToQuestionState(newState);
-    view.get().finishView();
-  }
+    @Override
+    public void noButtonClicked() {
+        CheatToQuestionState newState = new CheatToQuestionState(false);
+        mediator.setCheatToQuestionState(newState);
+        view.get().finishView();
+    }
 
-  @Override
-  public void injectView(WeakReference<CheatContract.View> view) {
-    this.view = view;
-  }
+    @Override
+    public void injectView(WeakReference<CheatContract.View> view) {
+        this.view = view;
+    }
 
-  @Override
-  public void injectModel(CheatContract.Model model) {
-    this.model = model;
-  }
+    @Override
+    public void injectModel(CheatContract.Model model) {
+        this.model = model;
+    }
 }

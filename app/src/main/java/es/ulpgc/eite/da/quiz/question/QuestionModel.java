@@ -2,13 +2,13 @@ package es.ulpgc.eite.da.quiz.question;
 
 public class QuestionModel implements QuestionContract.Model {
 
-  public static String TAG = "Quiz.QuestionModel";
+    public static String TAG = "Quiz.QuestionModel";
 
-  private String[] quizQuestions = {
-      "Christian Bale played Batman in 'The Dark Knight Rises'?", // 1
-      "The Gremlins movie was released in 1986?",  // 2
-      "Brad Pitt played Danny Ocean in Ocean's Eleven, Ocean's Twelve and Ocean's Thirteen?",  // 3
-      "A spoon full of sugar' came from the 1964 movie Mary Poppins?",  // 4
+    private String[] quizQuestions = {
+        "Christian Bale played Batman in 'The Dark Knight Rises'?", // 1
+        "The Gremlins movie was released in 1986?",  // 2
+        "Brad Pitt played Danny Ocean in Ocean's Eleven, Ocean's Twelve and Ocean's Thirteen?",  // 3
+        "A spoon full of sugar' came from the 1964 movie Mary Poppins?",  // 4
 //      "The song “I don't want to miss a thing” featured in Armageddon?", // 5
 //      "Will Smith has a son called Jaden?", // 6
 //      "Mark Ruffalo played Teddy Daniels in Shutter Island?", // 7
@@ -24,14 +24,14 @@ public class QuestionModel implements QuestionContract.Model {
 //      "Nicole Kidman played Poison Ivy in 'Batman and Robin'?", // 17
 //      "The Lara Croft: Tomb Raider movie was released in 2003?", // 18
 //      "Hallie Berry played the character Rogue in X Men?", // 19
-      "The Teenage Mutant Ninja Turtles are named after famous artists?" // 20
-  };
+        "The Teenage Mutant Ninja Turtles are named after famous artists?" // 20
+    };
 
-  private boolean[] quizAnswers = {
-      true, // 1
-      false, // 2
-      false, // 3
-      true, // 4
+    private boolean[] quizAnswers = {
+        true, // 1
+        false, // 2
+        false, // 3
+        true, // 4
 //      true, // 5
 //      true, // 6
 //      false, // 7
@@ -47,14 +47,14 @@ public class QuestionModel implements QuestionContract.Model {
 //      false, // 17
 //      false, // 18
 //      false, // 19
-      true // 20
-  };
+        true // 20
+    };
 
-  private int quizIndex = 0;
+    private int quizIndex = 0;
 
-  private String correctResultText, incorrectResultText;
+    //private String correctResultText, incorrectResultText;
 
-
+  /*
   @Override
   public String getCorrectResultText() {
     return correctResultText;
@@ -65,6 +65,7 @@ public class QuestionModel implements QuestionContract.Model {
     return incorrectResultText;
   }
 
+
   public void setCorrectResultText(String text) {
     correctResultText = text;
   }
@@ -72,35 +73,36 @@ public class QuestionModel implements QuestionContract.Model {
   public void setIncorrectResultText(String text) {
     incorrectResultText = text;
   }
+  */
 
-  @Override
-  public String getCurrentQuestion() {
-    return quizQuestions[quizIndex];
-  }
-
-  @Override
-  public boolean getCurrentAnswer() {
-    return quizAnswers[quizIndex];
-  }
-
-  @Override
-  public boolean isLastQuestion() {
-    if(quizIndex == quizQuestions.length-1){
-      return true;
+    @Override
+    public String getCurrentQuestion() {
+        return quizQuestions[quizIndex];
     }
 
-    return false;
+    @Override
+    public boolean getCurrentAnswer() {
+        return quizAnswers[quizIndex];
+    }
 
-  }
+    @Override
+    public boolean isLastQuestion() {
+        if (quizIndex == quizQuestions.length - 1) {
+            return true;
+        }
 
-  @Override
-  public void incrQuizIndex() {
-    quizIndex++;
-  }
+        return false;
 
-  @Override
-  public void setCurrentIndex(int index) {
-    quizIndex = index;
-  }
+    }
+
+    @Override
+    public void incrQuizIndex() {
+        quizIndex++;
+    }
+
+    @Override
+    public void setCurrentIndex(int index) {
+        quizIndex = index;
+    }
 
 }

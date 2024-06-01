@@ -1,10 +1,8 @@
 package es.ulpgc.eite.da.quiz.question;
 
-import java.util.Objects;
-
 public class QuestionState extends QuestionViewModel {
 
-  public int quizIndex = 0;
+    public int quizIndex = 0;
 
 
   /*

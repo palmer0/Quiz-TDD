@@ -1,14 +1,12 @@
 package es.ulpgc.eite.da.quiz.app;
 
-import java.util.Objects;
-
 public class CheatToQuestionState {
 
-  public boolean cheated;
+    public boolean cheated;
 
-  public CheatToQuestionState(Boolean cheated) {
-    this.cheated = cheated;
-  }
+    public CheatToQuestionState(Boolean cheated) {
+        this.cheated = cheated;
+    }
 
 
   /*

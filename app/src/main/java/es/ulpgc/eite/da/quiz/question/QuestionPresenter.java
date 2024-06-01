@@ -11,123 +11,129 @@ import es.ulpgc.eite.da.quiz.app.QuestionToCheatState;
 
 public class QuestionPresenter implements QuestionContract.Presenter {
 
-  public static String TAG = "Quiz.QuestionPresenter";
+    public static String TAG = "Quiz.QuestionPresenter";
 
-  private WeakReference<QuestionContract.View> view;
-  private QuestionState state;
-  private QuestionContract.Model model;
-  private AppMediator mediator;
+    private WeakReference<QuestionContract.View> view;
+    private QuestionState state;
+    private QuestionContract.Model model;
+    private AppMediator mediator;
 
-  public QuestionPresenter(AppMediator mediator) {
-    this.mediator = mediator;
-  }
+    public QuestionPresenter(AppMediator mediator) {
+        this.mediator = mediator;
+    }
 
-  @Override
-  public void onCreateCalled() {
-    Log.e(TAG, "onCreateCalled");
+    @Override
+    public void onCreateCalled() {
+        Log.e(TAG, "onCreateCalled");
 
-    state = new QuestionState();
-    mediator.setQuestionState(state);
-  }
+        state = new QuestionState();
+        mediator.setQuestionState(state);
+    }
 
-  @Override
-  public void onRecreateCalled() {
-    Log.e(TAG, "onRecreateCalled");
+    @Override
+    public void onRecreateCalled() {
+        Log.e(TAG, "onRecreateCalled");
 
-    state = mediator.getQuestionState();
-  }
+        state = mediator.getQuestionState();
+    }
 
-  @Override
-  public void onResumeCalled() {
-    Log.e(TAG, "onResumeCalled");
+    @Override
+    public void onResumeCalled() {
+        Log.e(TAG, "onResumeCalled");
 
-    // set passed state
-    CheatToQuestionState savedState =  mediator.getCheatToQuestionState();
-    if(savedState != null) {
+        // set passed state
+        CheatToQuestionState savedState = mediator.getCheatToQuestionState();
+        if (savedState != null) {
 
-        if(savedState.cheated){
-          nextButtonClicked();
-          return;
+            if (savedState.cheated) {
+                nextButtonClicked();
+                return;
+            }
         }
+
+        // call the model
+        model.setCurrentIndex(state.quizIndex);
+        state.questionText = model.getCurrentQuestion();
+
+        view.get().displayQuestionData(state);
+
     }
 
-    // call the model
-    model.setCurrentIndex(state.quizIndex);
-    state.questionText = model.getCurrentQuestion();
+    private void updateQuestionData(boolean userAnswer) {
 
-    view.get().displayQuestionData(state);
+        boolean currentAnswer = model.getCurrentAnswer();
 
-  }
+        if (currentAnswer == userAnswer) {
+            //state.resultText = model.getCorrectResultText();
+            state.resultIsCorrect = true;
 
-  private void updateQuestionData(boolean userAnswer) {
+        } else {
+            //state.resultText = model.getIncorrectResultText();
+            state.resultIsCorrect = false;
+        }
 
-    boolean currentAnswer = model.getCurrentAnswer();
+//      state.falseButton = false;
+//      state.trueButton = false;
+//      state.cheatButton = false;
 
-    if(currentAnswer == userAnswer) {
-      state.resultText = model.getCorrectResultText();
-    } else {
-      state.resultText = model.getIncorrectResultText();
+        if (model.isLastQuestion()) {
+            state.nextButton = false;
+            state.isLastQuestion = true;
+
+        } else {
+            state.nextButton = true;
+            state.isLastQuestion = false;
+        }
+
+        view.get().displayQuestionData(state);
     }
 
-    state.falseButton = false;
-    state.trueButton = false;
-    state.cheatButton = false;
 
-    if(model.isLastQuestion()) {
-      state.nextButton = false;
-    } else {
-      state.nextButton = true;
+    @Override
+    public void trueButtonClicked() {
+        updateQuestionData(true);
     }
 
-    view.get().displayQuestionData(state);
-  }
+    @Override
+    public void falseButtonClicked() {
+        updateQuestionData(false);
+    }
 
+    @Override
+    public void cheatButtonClicked() {
+        boolean answer = model.getCurrentAnswer();
+        QuestionToCheatState newState = new QuestionToCheatState(answer);
+        mediator.setQuestionToCheatState(newState);
 
-  @Override
-  public void trueButtonClicked() {
-    updateQuestionData(true);
-  }
+        view.get().navigateToCheatScreen();
+    }
 
-  @Override
-  public void falseButtonClicked() {
-    updateQuestionData(false);
-  }
+    @Override
+    public void nextButtonClicked() {
+        //Log.e(TAG, "nextButtonClicked");
 
-  @Override
-  public void cheatButtonClicked() {
-    boolean answer = model.getCurrentAnswer();
-    QuestionToCheatState newState = new QuestionToCheatState(answer);
-    mediator.setQuestionToCheatState(newState);
+        state.quizIndex++;
+        model.incrQuizIndex();
 
-    view.get().navigateToCheatScreen();
-  }
+        state.questionText = model.getCurrentQuestion();
+        //state.resultText = "";
 
-  @Override
-  public void nextButtonClicked() {
-    //Log.e(TAG, "nextButtonClicked");
+//      state.falseButton = true;
+//      state.trueButton = true;
+//      state.cheatButton = true;
+        state.nextButton = false;
 
-    state.quizIndex++;
-    model.incrQuizIndex();
+        view.get().displayQuestionData(state);
+    }
 
-    state.questionText = model.getCurrentQuestion();
-    state.resultText = "";
+    @Override
+    public void injectView(WeakReference<QuestionContract.View> view) {
+        this.view = view;
+    }
 
-    state.falseButton = true;
-    state.trueButton = true;
-    state.cheatButton = true;
-    state.nextButton = false;
-
-    view.get().displayQuestionData(state);
-  }
-
-  @Override
-  public void injectView(WeakReference<QuestionContract.View> view) {
-    this.view = view;
-  }
-
-  @Override
-  public void injectModel(QuestionContract.Model model) {
-    this.model = model;
-  }
+    @Override
+    public void injectModel(QuestionContract.Model model) {
+        this.model = model;
+    }
 
 }

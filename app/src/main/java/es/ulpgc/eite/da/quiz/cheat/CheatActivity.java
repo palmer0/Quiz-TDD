@@ -13,27 +13,27 @@ import es.ulpgc.eite.da.quiz.R;
 public class CheatActivity
     extends AppCompatActivity implements CheatContract.View {
 
-  public static String TAG = "Quiz.CheatActivity";
+    public static String TAG = "Quiz.CheatActivity";
 
-  CheatContract.Presenter presenter;
+    CheatContract.Presenter presenter;
 
-  TextView confirmationField, answerField;
-  Button yesButton, noButton;
+    TextView confirmationField, answerField;
+    Button yesButton, noButton;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_cheat);
-    setTitle(R.string.cheat_screen_title);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cheat);
+        setTitle(R.string.cheat_screen_title);
 
-    yesButton = findViewById(R.id.yesButton);
-    noButton = findViewById(R.id.noButton);
-    confirmationField = findViewById(R.id.confirmationText);
-    answerField = findViewById(R.id.answerText);
+        yesButton = findViewById(R.id.yesButton);
+        noButton = findViewById(R.id.noButton);
+        confirmationField = findViewById(R.id.confirmationText);
+        answerField = findViewById(R.id.answerText);
 
-    yesButton.setText(getYesButtonLabel());
-    noButton.setText(getNoButtonLabel());
-    confirmationField.setText(getConfirmationButtonLabel());
+        yesButton.setText(getYesButtonLabel());
+        noButton.setText(getNoButtonLabel());
+        confirmationField.setText(getConfirmationButtonLabel());
 
     /*yesButton.setOnClickListener(new View.OnClickListener() {
 
@@ -51,77 +51,77 @@ public class CheatActivity
       }
     });*/
 
-    yesButton.setOnClickListener(v -> presenter.yesButtonClicked());
-    noButton.setOnClickListener(v -> presenter.noButtonClicked());
+        yesButton.setOnClickListener(v -> presenter.yesButtonClicked());
+        noButton.setOnClickListener(v -> presenter.noButtonClicked());
 
 
-    // do the setup
-    CheatScreen.configure(this);
+        // do the setup
+        CheatScreen.configure(this);
 
-    // do some work
-    if(savedInstanceState  == null) {
-      presenter.onCreateCalled();
-      
-    }else{
-      presenter.onRecreateCalled();
+        // do some work
+        if (savedInstanceState == null) {
+            presenter.onCreateCalled();
+
+        } else {
+            presenter.onRecreateCalled();
+        }
     }
-  }
 
 
-  @Override
-  protected void onResume() {
-    super.onResume();
+    @Override
+    protected void onResume() {
+        super.onResume();
 
-    // do some work
-    presenter.onResumeCalled();
-  }
+        // do some work
+        presenter.onResumeCalled();
+    }
 
-  @Override
-  public void onBackPressed() {
-    super.onBackPressed();
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
-    presenter.onBackPressed();
-  }
+        presenter.onBackPressed();
+    }
 
-  @Override
-  protected void onDestroy() {
-    super.onDestroy();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
-    //presenter.onDestroyCalled();
-  }
-
-
-  @Override
-  public void displayCheatData(CheatViewModel viewModel) {
-    Log.e(TAG, "displayCheatData");
-
-    // deal with the data
-    answerField.setText(viewModel.answerText);
-
-    yesButton.setEnabled(viewModel.yesButton);
-    noButton.setEnabled(viewModel.noButton);
-  }
-
-  @Override
-  public void finishView(){
-    finish();
-  }
-
-  private String getYesButtonLabel() {
-    return getResources().getString(R.string.yes_label);
-  }
-
-  private String getNoButtonLabel() {
-    return getResources().getString(R.string.no_label);
-  }
-
-  private String getConfirmationButtonLabel() {
-    return getResources().getString(R.string.confirmation_text);
-  }
+        //presenter.onDestroyCalled();
+    }
 
 
-  @Override
-  public void injectPresenter(CheatContract.Presenter presenter) {
-    this.presenter = presenter;
-  }
+    @Override
+    public void displayCheatData(CheatViewModel viewModel) {
+        Log.e(TAG, "displayCheatData");
+
+        // deal with the data
+        answerField.setText(viewModel.answerText);
+
+        yesButton.setEnabled(viewModel.yesButton);
+        noButton.setEnabled(viewModel.noButton);
+    }
+
+    @Override
+    public void finishView() {
+        finish();
+    }
+
+    private String getYesButtonLabel() {
+        return getResources().getString(R.string.yes_label);
+    }
+
+    private String getNoButtonLabel() {
+        return getResources().getString(R.string.no_label);
+    }
+
+    private String getConfirmationButtonLabel() {
+        return getResources().getString(R.string.confirmation_text);
+    }
+
+
+    @Override
+    public void injectPresenter(CheatContract.Presenter presenter) {
+        this.presenter = presenter;
+    }
 }
