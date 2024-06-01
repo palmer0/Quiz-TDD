@@ -130,11 +130,6 @@ public class QuestionActivity
   }
 
   @Override
-  public void injectPresenter(QuestionContract.Presenter presenter) {
-    this.presenter = presenter;
-  }
-
-  @Override
   public void displayQuestionData(QuestionViewModel viewModel) {
     Log.e(TAG, "displayQuestionData");
 
@@ -164,6 +159,12 @@ public class QuestionActivity
 
   private String getTrueButtonLabel() {
     return getResources().getString(R.string.true_label);
+  }
+
+
+  @Override
+  public void injectPresenter(QuestionContract.Presenter presenter) {
+    this.presenter = presenter;
   }
 
 }
