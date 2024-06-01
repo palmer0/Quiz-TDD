@@ -96,7 +96,6 @@ public class CheatActivity
         Log.e(TAG, "displayCheatData");
 
         // deal with the data
-        //answerField.setText(viewModel.answerText);
         if(!viewModel.isAnswerShown) {
             answerField.setText(getString(R.string.empty_text));
 
@@ -111,6 +110,9 @@ public class CheatActivity
 
         yesButton.setEnabled(!viewModel.isAnswerShown);
         noButton.setEnabled(!viewModel.isAnswerShown);
+
+        //answerField.setText(viewModel.answerText);
+
         //yesButton.setEnabled(viewModel.cheatButtons);
         //noButton.setEnabled(viewModel.cheatButtons);
         //yesButton.setEnabled(viewModel.yesButton);
