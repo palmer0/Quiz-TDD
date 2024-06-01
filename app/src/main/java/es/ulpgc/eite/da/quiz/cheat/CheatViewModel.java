@@ -2,10 +2,14 @@ package es.ulpgc.eite.da.quiz.cheat;
 
 public class CheatViewModel {
 
-    public String answerText = "";
+    //public String answerText = "";
 
-    public boolean yesButton = true;
-    public boolean noButton = true;
+    //public boolean yesButton = true;
+    //public boolean noButton = true;
+    //public boolean cheatButtons = true;
+    public boolean isAnswerShown = false;
+    public boolean isAnswerTrue = false;
+
 
   /*
   @Override

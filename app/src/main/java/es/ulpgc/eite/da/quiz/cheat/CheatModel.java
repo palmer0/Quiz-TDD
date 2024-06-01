@@ -13,6 +13,7 @@ public class CheatModel implements CheatContract.Model {
 
     }
 
+    /*
     @Override
     public String getFalseAnswerText() {
         return falseAnswerText;
@@ -30,4 +31,5 @@ public class CheatModel implements CheatContract.Model {
     public void setTrueAnswerText(String text) {
         trueAnswerText = text;
     }
+    */
 }
