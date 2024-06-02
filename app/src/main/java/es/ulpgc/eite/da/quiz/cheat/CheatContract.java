@@ -33,8 +33,14 @@ public interface CheatContract {
 
     interface Model {
 
-        //String getFalseAnswerText();
+        String getEmptyAnswerText();
 
-        //String getTrueAnswerText();
+        String getFalseAnswerText();
+
+        void setFalseAnswerText(String text);
+
+        String getTrueAnswerText();
+
+        void setTrueAnswerText(String text);
     }
 }

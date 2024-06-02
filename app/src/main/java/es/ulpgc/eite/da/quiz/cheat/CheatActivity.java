@@ -96,6 +96,14 @@ public class CheatActivity
         Log.e(TAG, "displayCheatData");
 
         // deal with the data
+        answerField.setText(viewModel.answerText);
+
+        //yesButton.setEnabled(viewModel.cheatButtons);
+        //noButton.setEnabled(viewModel.cheatButtons);
+        yesButton.setEnabled(viewModel.yesButton);
+        noButton.setEnabled(viewModel.noButton);
+
+        /*
         if(!viewModel.isAnswerShown) {
             answerField.setText(getString(R.string.empty_text));
 
@@ -110,13 +118,8 @@ public class CheatActivity
 
         yesButton.setEnabled(!viewModel.isAnswerShown);
         noButton.setEnabled(!viewModel.isAnswerShown);
+        */
 
-        //answerField.setText(viewModel.answerText);
-
-        //yesButton.setEnabled(viewModel.cheatButtons);
-        //noButton.setEnabled(viewModel.cheatButtons);
-        //yesButton.setEnabled(viewModel.yesButton);
-        //noButton.setEnabled(viewModel.noButton);
     }
 
     @Override
@@ -124,6 +127,7 @@ public class CheatActivity
         finish();
     }
 
+    /*
     public String getTrueAnswerText() {
         return getString(R.string.true_text);
     }
@@ -131,6 +135,9 @@ public class CheatActivity
     public String getFalseAnswerText() {
         return getString(R.string.false_text);
     }
+
+    */
+
 
     private String getYesButtonLabel() {
         return getResources().getString(R.string.yes_label);

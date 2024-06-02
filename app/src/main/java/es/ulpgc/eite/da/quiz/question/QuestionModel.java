@@ -52,28 +52,45 @@ public class QuestionModel implements QuestionContract.Model {
 
     private int quizIndex = 0;
 
-    //private String correctResultText, incorrectResultText;
+    private String correctResultText, incorrectResultText;
+    private String emptyResultText;
 
-  /*
-  @Override
-  public String getCorrectResultText() {
-    return correctResultText;
-  }
+    public QuestionModel(String emptyText) {
+        emptyResultText=emptyText;
+    }
 
-  @Override
-  public String getIncorrectResultText() {
-    return incorrectResultText;
-  }
+    @Override
+    public String getEmptyResultText() {
+        return emptyResultText;
+    }
 
+    /*
+    @Override
+    public void setEmptyResultText(String emptyResultText) {
+        this.emptyResultText = emptyResultText;
+    }
+    */
 
-  public void setCorrectResultText(String text) {
-    correctResultText = text;
-  }
+    @Override
+    public String getCorrectResultText() {
+        return correctResultText;
+    }
 
-  public void setIncorrectResultText(String text) {
-    incorrectResultText = text;
-  }
-  */
+    @Override
+    public String getIncorrectResultText() {
+        return incorrectResultText;
+    }
+
+    @Override
+    public void setCorrectResultText(String text) {
+        correctResultText = text;
+    }
+
+    @Override
+    public void setIncorrectResultText(String text) {
+        incorrectResultText = text;
+    }
+
 
     @Override
     public String getCurrentQuestion() {

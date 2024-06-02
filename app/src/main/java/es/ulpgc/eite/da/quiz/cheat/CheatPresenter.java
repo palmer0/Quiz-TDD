@@ -51,12 +51,12 @@ public class CheatPresenter implements CheatContract.Presenter {
 
         //mediator.resetCheatToQuestionState();
 
-    /*if(state.cheated) {
-      state.cheated = false;
+        /*if(state.cheated) {
+          state.cheated = false;
 
-      CheatToQuestionState newState = new CheatToQuestionState(true);
-      mediator.setCheatToQuestionState(newState);
-    }*/
+          CheatToQuestionState newState = new CheatToQuestionState(true);
+          mediator.setCheatToQuestionState(newState);
+        }*/
     }
 
   /*
@@ -82,19 +82,19 @@ public class CheatPresenter implements CheatContract.Presenter {
             CheatToQuestionState newState = new CheatToQuestionState(true);
             mediator.setCheatToQuestionState(newState);
 
-//            if (savedState.answer) {
-//                state.answerText = model.getTrueAnswerText();
-//
-//            } else {
-//                state.answerText = model.getFalseAnswerText();
-//            }
+            if (savedState.answer) {
+                state.answerText = model.getTrueAnswerText();
 
-            state.isAnswerTrue = savedState.answer;
-            state.isAnswerShown = true;
+            } else {
+                state.answerText = model.getFalseAnswerText();
+            }
 
-            //state.yesButton = false;
-            //state.noButton = false;
+            //state.isAnswerTrue = savedState.answer;
+            //state.isAnswerShown = true;
             //state.cheatButtons = false;
+
+            state.yesButton = false;
+            state.noButton = false;
 
             view.get().displayCheatData(state);
         }

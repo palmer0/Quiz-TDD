@@ -134,7 +134,14 @@ public class QuestionActivity
 
         // deal with the data
         questionField.setText(viewModel.questionText);
-        //resultField.setText(viewModel.resultText);
+        resultField.setText(viewModel.resultText);
+
+        trueButton.setEnabled(viewModel.trueButton);
+        falseButton.setEnabled(viewModel.falseButton);
+        cheatButton.setEnabled(viewModel.cheatButton);
+        nextButton.setEnabled(viewModel.nextButton);
+
+        /*
         resultField.setText(getString(R.string.empty_text));
 
         if (viewModel.nextButton || viewModel.isLastQuestion) {
@@ -145,13 +152,10 @@ public class QuestionActivity
             );
 
         }
+        */
 
 
-//      trueButton.setEnabled(viewModel.trueButton);
-//      falseButton.setEnabled(viewModel.falseButton);
-//      cheatButton.setEnabled(viewModel.cheatButton);
-
-
+        /*
         if (viewModel.isLastQuestion) {
             trueButton.setEnabled(false);
             falseButton.setEnabled(false);
@@ -164,9 +168,11 @@ public class QuestionActivity
             cheatButton.setEnabled(!viewModel.nextButton);
             nextButton.setEnabled(viewModel.nextButton);
         }
+        */
 
     }
 
+    /*
     public String getCorrectResultText() {
         return getString(R.string.correct_text);
     }
@@ -174,6 +180,7 @@ public class QuestionActivity
     public String getIncorrectResultText() {
         return getString(R.string.incorrect_text);
     }
+    */
 
     private String getCheatButtonLabel() {
         return getResources().getString(R.string.cheat_label);

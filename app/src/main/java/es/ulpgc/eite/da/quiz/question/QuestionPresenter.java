@@ -64,25 +64,25 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         boolean currentAnswer = model.getCurrentAnswer();
 
         if (currentAnswer == userAnswer) {
-            //state.resultText = model.getCorrectResultText();
-            state.resultIsCorrect = true;
+            state.resultText = model.getCorrectResultText();
+            //state.resultIsCorrect = true;
 
         } else {
-            //state.resultText = model.getIncorrectResultText();
-            state.resultIsCorrect = false;
+            state.resultText = model.getIncorrectResultText();
+            //state.resultIsCorrect = false;
         }
 
-//      state.falseButton = false;
-//      state.trueButton = false;
-//      state.cheatButton = false;
+        state.falseButton = false;
+        state.trueButton = false;
+        state.cheatButton = false;
 
         if (model.isLastQuestion()) {
             state.nextButton = false;
-            state.isLastQuestion = true;
+            //state.isLastQuestion = true;
 
         } else {
             state.nextButton = true;
-            state.isLastQuestion = false;
+            //state.isLastQuestion = false;
         }
 
         view.get().displayQuestionData(state);
@@ -116,11 +116,12 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         model.incrQuizIndex();
 
         state.questionText = model.getCurrentQuestion();
+        state.resultText = model.getEmptyResultText();
         //state.resultText = "";
 
-//      state.falseButton = true;
-//      state.trueButton = true;
-//      state.cheatButton = true;
+        state.falseButton = true;
+        state.trueButton = true;
+        state.cheatButton = true;
         state.nextButton = false;
 
         view.get().displayQuestionData(state);

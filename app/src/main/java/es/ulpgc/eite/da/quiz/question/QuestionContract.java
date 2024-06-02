@@ -36,8 +36,15 @@ public interface QuestionContract {
 
     interface Model {
 
-//    String getCorrectResultText();
-//    String getIncorrectResultText();
+        String getEmptyResultText();
+
+        String getCorrectResultText();
+
+        String getIncorrectResultText();
+
+        void setCorrectResultText(String text);
+
+        void setIncorrectResultText(String text);
 
         String getCurrentQuestion();
 
