@@ -21,6 +21,10 @@ public interface QuestionContract {
 
         void onResumeCalled();
 
+        void onPauseCalled();
+
+        void onDestroyCalled();
+
         void trueButtonClicked();
 
         void falseButtonClicked();

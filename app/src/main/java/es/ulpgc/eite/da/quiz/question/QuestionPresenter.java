@@ -27,7 +27,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         Log.e(TAG, "onCreateCalled");
 
         state = new QuestionState();
-        mediator.setQuestionState(state);
+        //mediator.setQuestionState(state);
     }
 
     @Override
@@ -58,6 +58,22 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         view.get().displayQuestionData(state);
 
     }
+
+    @Override
+    public void onPauseCalled() {
+        Log.e(TAG, "onPauseCalled");
+
+        mediator.setQuestionState(state);
+    }
+
+    @Override
+    public void onDestroyCalled() {
+        Log.e(TAG, "onDestroyCalled");
+
+        // Reset current state
+        //mediator.resetCheatState();
+    }
+
 
     private void updateQuestionData(boolean userAnswer) {
 

@@ -18,6 +18,10 @@ public interface CheatContract {
 
         void injectModel(Model model);
 
+        void onPauseCalled();
+
+        void onDestroyCalled();
+
         void yesButtonClicked();
 
         void noButtonClicked();

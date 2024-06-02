@@ -27,7 +27,7 @@ public class CheatPresenter implements CheatContract.Presenter {
         Log.e(TAG, "onCreateCalled");
 
         state = new CheatState();
-        mediator.setCheatState(state);
+        //mediator.setCheatState(state);
 
     }
 
@@ -59,15 +59,20 @@ public class CheatPresenter implements CheatContract.Presenter {
         }*/
     }
 
-  /*
-  @Override
-  public void onDestroyCalled() {
-    Log.e(TAG, "onDestroyCalled");
+    @Override
+    public void onPauseCalled() {
+        Log.e(TAG, "onPauseCalled");
 
-    // Reset current state 
-    mediator.resetCheatState();
-  }
-  */
+        mediator.setCheatState(state);
+    }
+
+    @Override
+    public void onDestroyCalled() {
+        Log.e(TAG, "onDestroyCalled");
+
+        // Reset current state
+        //mediator.resetCheatState();
+    }
 
 
     @Override

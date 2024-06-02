@@ -111,6 +111,7 @@ public class QuestionActivity
         super.onPause();
 
         //Log.e(TAG, "onPause");
+        presenter.onPauseCalled();
     }
 
     @Override
@@ -118,6 +119,7 @@ public class QuestionActivity
         super.onDestroy();
 
         //Log.e(TAG, "onDestroy");
+        presenter.onDestroyCalled();
     }
 
 

@@ -84,10 +84,17 @@ public class CheatActivity
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+
+        presenter.onPauseCalled();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        //presenter.onDestroyCalled();
+        presenter.onDestroyCalled();
     }
 
 
