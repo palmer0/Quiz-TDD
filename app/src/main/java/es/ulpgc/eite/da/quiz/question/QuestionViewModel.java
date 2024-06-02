@@ -3,7 +3,8 @@ package es.ulpgc.eite.da.quiz.question;
 public class QuestionViewModel {
 
     public String questionText;
-    public String resultText = "";
+    //public String resultText = "";
+    public String resultText;
 
     public boolean falseButton = true;
     public boolean trueButton = true;

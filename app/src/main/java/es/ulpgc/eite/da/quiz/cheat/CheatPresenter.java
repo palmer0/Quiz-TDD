@@ -27,6 +27,7 @@ public class CheatPresenter implements CheatContract.Presenter {
         Log.e(TAG, "onCreateCalled");
 
         state = new CheatState();
+        state.answerText=model.getEmptyAnswerText();
         //mediator.setCheatState(state);
 
     }

@@ -27,6 +27,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         Log.e(TAG, "onCreateCalled");
 
         state = new QuestionState();
+        state.resultText=model.getEmptyResultText();
         //mediator.setQuestionState(state);
     }
 
