@@ -26,8 +26,9 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     public void onCreateCalled() {
         Log.e(TAG, "onCreateCalled");
 
+        // init the screen state
         state = new QuestionState();
-        state.resultText=model.getEmptyResultText();
+        state.resultText = model.getEmptyResultText();
         //mediator.setQuestionState(state);
     }
 
@@ -35,6 +36,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     public void onRecreateCalled() {
         Log.e(TAG, "onRecreateCalled");
 
+        // restore the screen state
         state = mediator.getQuestionState();
     }
 
@@ -42,20 +44,23 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     public void onResumeCalled() {
         Log.e(TAG, "onResumeCalled");
 
-        // set passed state
+        // get the saved state from the next screen
         CheatToQuestionState savedState = mediator.getCheatToQuestionState();
         if (savedState != null) {
 
+            // update the current state
             if (savedState.cheated) {
                 nextButtonClicked();
                 return;
             }
         }
 
-        // call the model
+        // update the model
         model.setCurrentIndex(state.quizIndex);
+        // update the current state
         state.questionText = model.getCurrentQuestion();
 
+        // refresh the display with updated state
         view.get().displayQuestionData(state);
 
     }
@@ -64,6 +69,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     public void onPauseCalled() {
         Log.e(TAG, "onPauseCalled");
 
+        // save the current state
         mediator.setQuestionState(state);
     }
 
@@ -77,6 +83,8 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
 
     private void updateQuestionData(boolean userAnswer) {
+
+        // update the current state
 
         boolean currentAnswer = model.getCurrentAnswer();
 
@@ -102,32 +110,43 @@ public class QuestionPresenter implements QuestionContract.Presenter {
             //state.isLastQuestion = false;
         }
 
+        // refresh the display with updated state
         view.get().displayQuestionData(state);
     }
 
 
     @Override
     public void trueButtonClicked() {
+        Log.e(TAG, "trueButtonClicked");
+
         updateQuestionData(true);
     }
 
     @Override
     public void falseButtonClicked() {
+        Log.e(TAG, "falseButtonClicked");
+
         updateQuestionData(false);
     }
 
     @Override
     public void cheatButtonClicked() {
-        boolean answer = model.getCurrentAnswer();
-        QuestionToCheatState newState = new QuestionToCheatState(answer);
-        mediator.setQuestionToCheatState(newState);
+        Log.e(TAG, "cheatButtonClicked");
 
+        // save the state to next screen
+        boolean answer = model.getCurrentAnswer();
+        QuestionToCheatState nextState = new QuestionToCheatState(answer);
+        mediator.setQuestionToCheatState(nextState);
+
+        // navigate to next screen
         view.get().navigateToCheatScreen();
     }
 
     @Override
     public void nextButtonClicked() {
-        //Log.e(TAG, "nextButtonClicked");
+        Log.e(TAG, "nextButtonClicked");
+
+        // update the current state
 
         state.quizIndex++;
         model.incrQuizIndex();
@@ -141,6 +160,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         state.cheatButton = true;
         state.nextButton = false;
 
+        // refresh the display with updated state
         view.get().displayQuestionData(state);
     }
 

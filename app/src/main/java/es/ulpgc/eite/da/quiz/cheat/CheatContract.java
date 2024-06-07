@@ -32,7 +32,7 @@ public interface CheatContract {
 
         void onRecreateCalled();
 
-        void onBackPressed();
+        void onBackButtonPressed();
     }
 
     interface Model {

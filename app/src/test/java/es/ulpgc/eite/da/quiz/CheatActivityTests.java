@@ -1,18 +1,15 @@
 package es.ulpgc.eite.da.quiz;
 
-import static android.app.Activity.RESULT_OK;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.robolectric.Shadows.shadowOf;
 
-import android.content.Intent;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.test.core.app.ActivityScenario;
-import androidx.test.core.app.ApplicationProvider;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -20,13 +17,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadows.ShadowActivity;
 
 import es.ulpgc.eite.da.quiz.app.AppMediator;
 import es.ulpgc.eite.da.quiz.app.CheatToQuestionState;
 import es.ulpgc.eite.da.quiz.app.QuestionToCheatState;
 import es.ulpgc.eite.da.quiz.cheat.CheatActivity;
-import es.ulpgc.eite.da.quiz.question.QuestionActivity;
 
 @RunWith(RobolectricTestRunner.class)
 //@Config(manifest=Config.NONE)
@@ -92,8 +87,8 @@ public class CheatActivityTests {
         AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         scenario.onActivity(activity -> {
-            TextView answerTextView = activity.findViewById(R.id.answerText);
-            TextView warningTextView = activity.findViewById(R.id.confirmationText);
+            TextView answerTextView = activity.findViewById(R.id.answerField);
+            TextView warningTextView = activity.findViewById(R.id.confirmationField);
             Button yesButton = activity.findViewById(R.id.yesButton);
             Button noButton = activity.findViewById(R.id.noButton);
 
@@ -126,8 +121,8 @@ public class CheatActivityTests {
         AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         scenario.onActivity(activity -> {
-            TextView answerTextView = activity.findViewById(R.id.answerText);
-            TextView warningTextView = activity.findViewById(R.id.confirmationText);
+            TextView answerTextView = activity.findViewById(R.id.answerField);
+            TextView warningTextView = activity.findViewById(R.id.confirmationField);
             Button yesButton = activity.findViewById(R.id.yesButton);
             Button noButton = activity.findViewById(R.id.noButton);
 
@@ -162,8 +157,8 @@ public class CheatActivityTests {
         AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         scenario.onActivity(activity -> {
-            TextView answerTextView = activity.findViewById(R.id.answerText);
-            TextView warningTextView = activity.findViewById(R.id.confirmationText);
+            TextView answerTextView = activity.findViewById(R.id.answerField);
+            TextView warningTextView = activity.findViewById(R.id.confirmationField);
             Button yesButton = activity.findViewById(R.id.yesButton);
             Button noButton = activity.findViewById(R.id.noButton);
 
@@ -198,8 +193,8 @@ public class CheatActivityTests {
         AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         scenario.onActivity(activity -> {
-            TextView answerTextView = activity.findViewById(R.id.answerText);
-            TextView warningTextView = activity.findViewById(R.id.confirmationText);
+            TextView answerTextView = activity.findViewById(R.id.answerField);
+            TextView warningTextView = activity.findViewById(R.id.confirmationField);
             Button yesButton = activity.findViewById(R.id.yesButton);
             Button noButton = activity.findViewById(R.id.noButton);
 

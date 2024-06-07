@@ -1,13 +1,11 @@
 package es.ulpgc.eite.da.quiz;
 
-import static android.app.Activity.RESULT_OK;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.robolectric.Shadows.shadowOf;
 
-import android.content.Intent;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -23,7 +21,6 @@ import org.robolectric.annotation.Config;
 import es.ulpgc.eite.da.quiz.app.AppMediator;
 import es.ulpgc.eite.da.quiz.app.CheatToQuestionState;
 import es.ulpgc.eite.da.quiz.app.QuestionToCheatState;
-import es.ulpgc.eite.da.quiz.cheat.CheatActivity;
 import es.ulpgc.eite.da.quiz.question.QuestionActivity;
 
 @RunWith(RobolectricTestRunner.class)
@@ -87,8 +84,8 @@ public class QuestionActivityTests {
             ActivityScenario.launch(QuestionActivity.class);
 
         scenario.onActivity(activity -> {
-            TextView resultTextView = activity.findViewById(R.id.resultText);
-            TextView questionTextView = activity.findViewById(R.id.questionText);
+            TextView resultTextView = activity.findViewById(R.id.resultField);
+            TextView questionTextView = activity.findViewById(R.id.questionField);
             Button trueButton = activity.findViewById(R.id.trueButton);
             Button falseButton = activity.findViewById(R.id.falseButton);
             Button cheatButton = activity.findViewById(R.id.cheatButton);
@@ -121,8 +118,8 @@ public class QuestionActivityTests {
             ActivityScenario.launch(QuestionActivity.class);
 
         scenario.onActivity(activity -> {
-            TextView resultTextView = activity.findViewById(R.id.resultText);
-            TextView questionTextView = activity.findViewById(R.id.questionText);
+            TextView resultTextView = activity.findViewById(R.id.resultField);
+            TextView questionTextView = activity.findViewById(R.id.questionField);
             Button trueButton = activity.findViewById(R.id.trueButton);
             Button falseButton = activity.findViewById(R.id.falseButton);
             Button cheatButton = activity.findViewById(R.id.cheatButton);
@@ -155,8 +152,8 @@ public class QuestionActivityTests {
             ActivityScenario.launch(QuestionActivity.class);
 
         scenario.onActivity(activity -> {
-            TextView resultTextView = activity.findViewById(R.id.resultText);
-            TextView questionTextView = activity.findViewById(R.id.questionText);
+            TextView resultTextView = activity.findViewById(R.id.resultField);
+            TextView questionTextView = activity.findViewById(R.id.questionField);
             Button trueButton = activity.findViewById(R.id.trueButton);
             Button falseButton = activity.findViewById(R.id.falseButton);
             Button cheatButton = activity.findViewById(R.id.cheatButton);
@@ -191,8 +188,8 @@ public class QuestionActivityTests {
             ActivityScenario.launch(QuestionActivity.class);
 
         scenario.onActivity(activity -> {
-            TextView resultTextView = activity.findViewById(R.id.resultText);
-            TextView questionTextView = activity.findViewById(R.id.questionText);
+            TextView resultTextView = activity.findViewById(R.id.resultField);
+            TextView questionTextView = activity.findViewById(R.id.questionField);
             Button trueButton = activity.findViewById(R.id.trueButton);
             Button falseButton = activity.findViewById(R.id.falseButton);
             Button cheatButton = activity.findViewById(R.id.cheatButton);
@@ -248,8 +245,8 @@ public class QuestionActivityTests {
                 ActivityScenario.launch(QuestionActivity.class);
 
         scenario.onActivity(activity -> {
-            TextView resultTextView = activity.findViewById(R.id.resultText);
-            TextView questionTextView = activity.findViewById(R.id.questionText);
+            TextView resultTextView = activity.findViewById(R.id.resultField);
+            TextView questionTextView = activity.findViewById(R.id.questionField);
             Button trueButton = activity.findViewById(R.id.trueButton);
             Button falseButton = activity.findViewById(R.id.falseButton);
             Button cheatButton = activity.findViewById(R.id.cheatButton);
@@ -295,8 +292,8 @@ public class QuestionActivityTests {
                 ActivityScenario.launch(QuestionActivity.class);
 
         scenario.onActivity(activity -> {
-            TextView resultTextView = activity.findViewById(R.id.resultText);
-            TextView questionTextView = activity.findViewById(R.id.questionText);
+            TextView resultTextView = activity.findViewById(R.id.resultField);
+            TextView questionTextView = activity.findViewById(R.id.questionField);
             Button trueButton = activity.findViewById(R.id.trueButton);
             Button falseButton = activity.findViewById(R.id.falseButton);
             Button cheatButton = activity.findViewById(R.id.cheatButton);
@@ -371,8 +368,8 @@ public class QuestionActivityTests {
             ActivityScenario.launch(QuestionActivity.class);
 
         scenario.onActivity(activity -> {
-            TextView resultTextView = activity.findViewById(R.id.resultText);
-            TextView questionTextView = activity.findViewById(R.id.questionText);
+            TextView resultTextView = activity.findViewById(R.id.resultField);
+            TextView questionTextView = activity.findViewById(R.id.questionField);
             Button trueButton = activity.findViewById(R.id.trueButton);
             Button falseButton = activity.findViewById(R.id.falseButton);
             Button cheatButton = activity.findViewById(R.id.cheatButton);
@@ -412,8 +409,8 @@ public class QuestionActivityTests {
             ActivityScenario.launch(QuestionActivity.class);
 
         scenario.onActivity(activity -> {
-            TextView resultTextView = activity.findViewById(R.id.resultText);
-            TextView questionTextView = activity.findViewById(R.id.questionText);
+            TextView resultTextView = activity.findViewById(R.id.resultField);
+            TextView questionTextView = activity.findViewById(R.id.questionField);
             Button trueButton = activity.findViewById(R.id.trueButton);
             Button falseButton = activity.findViewById(R.id.falseButton);
             Button cheatButton = activity.findViewById(R.id.cheatButton);

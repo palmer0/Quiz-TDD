@@ -28,8 +28,8 @@ public class CheatActivity
 
         yesButton = findViewById(R.id.yesButton);
         noButton = findViewById(R.id.noButton);
-        confirmationField = findViewById(R.id.confirmationText);
-        answerField = findViewById(R.id.answerText);
+        confirmationField = findViewById(R.id.confirmationField);
+        answerField = findViewById(R.id.answerField);
 
         yesButton.setText(getYesButtonLabel());
         noButton.setText(getNoButtonLabel());
@@ -80,7 +80,7 @@ public class CheatActivity
     public void onBackPressed() {
         super.onBackPressed();
 
-        presenter.onBackPressed();
+        presenter.onBackButtonPressed();
     }
 
     @Override
@@ -147,11 +147,11 @@ public class CheatActivity
 
 
     private String getYesButtonLabel() {
-        return getResources().getString(R.string.yes_label);
+        return getResources().getString(R.string.yes_button_label);
     }
 
     private String getNoButtonLabel() {
-        return getResources().getString(R.string.no_label);
+        return getResources().getString(R.string.no_button_label);
     }
 
     private String getConfirmationButtonLabel() {

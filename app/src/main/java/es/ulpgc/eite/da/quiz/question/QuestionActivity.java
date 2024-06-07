@@ -33,8 +33,8 @@ public class QuestionActivity
         falseButton = findViewById(R.id.falseButton);
         cheatButton = findViewById(R.id.cheatButton);
         nextButton = findViewById(R.id.nextButton);
-        questionField = findViewById(R.id.questionText);
-        resultField = findViewById(R.id.resultText);
+        questionField = findViewById(R.id.questionField);
+        resultField = findViewById(R.id.resultField);
 
         Log.e(TAG, "onCreate");
 
@@ -185,19 +185,19 @@ public class QuestionActivity
     */
 
     private String getCheatButtonLabel() {
-        return getResources().getString(R.string.cheat_label);
+        return getResources().getString(R.string.cheat_button_label);
     }
 
     private String getNextButtonLabel() {
-        return getResources().getString(R.string.next_label);
+        return getResources().getString(R.string.next_button_label);
     }
 
     private String getFalseButtonLabel() {
-        return getResources().getString(R.string.false_label);
+        return getResources().getString(R.string.false_button_label);
     }
 
     private String getTrueButtonLabel() {
-        return getResources().getString(R.string.true_label);
+        return getResources().getString(R.string.true_button_label);
     }
 
 

@@ -32,17 +32,17 @@ public class QuizSteps {
   }
 
   public void mostrarPregunta(String question) {
-    onView(withId(R.id.questionText)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.questionText)).check(matches(withText(question)));
+    onView(withId(R.id.questionField)).check(matches(isCompletelyDisplayed()));
+    onView(withId(R.id.questionField)).check(matches(withText(question)));
   }
 
   public void ocultarResultadoMostrandoTexto(String text) {
-    onView(withId(R.id.resultText)).check(matches(withText(text)));
+    onView(withId(R.id.resultField)).check(matches(withText(text)));
   }
 
 
   public void ocultarRespuestaMostrandoTexto(String text) {
-    onView(withId(R.id.answerText)).check(matches(withText(text)));
+    onView(withId(R.id.answerField)).check(matches(withText(text)));
   }
 
   public void mostrarBotonesTrueYFalseYCheatActivados() {
@@ -115,8 +115,8 @@ public class QuizSteps {
   */
 
   public void mostrarResultadoARespuesta(String result) {
-    onView(withId(R.id.resultText)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.resultText)).check(matches(withText(result)));
+    onView(withId(R.id.resultField)).check(matches(isCompletelyDisplayed()));
+    onView(withId(R.id.resultField)).check(matches(withText(result)));
   }
 
 
@@ -142,8 +142,8 @@ public class QuizSteps {
   }
 
   public void mostrarMensajeWarning(String w) {
-    onView(withId(R.id.confirmationText)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.confirmationText)).check(matches(withText(w)));
+    onView(withId(R.id.confirmationField)).check(matches(isCompletelyDisplayed()));
+    onView(withId(R.id.confirmationField)).check(matches(withText(w)));
   }
 
   public void mostrarBotonesYesYNoActivados() {
@@ -169,8 +169,8 @@ public class QuizSteps {
 
   public void mostrarRespuestaAPregunta(String answer) {
 
-    onView(withId(R.id.answerText)).check(matches(isCompletelyDisplayed()));
-    onView(withId(R.id.answerText)).check(matches(withText(answer)));
+    onView(withId(R.id.answerField)).check(matches(isCompletelyDisplayed()));
+    onView(withId(R.id.answerField)).check(matches(withText(answer)));
   }
 
   public void mostrarBotonesYesYNoDesactivados() {
