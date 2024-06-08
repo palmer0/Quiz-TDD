@@ -31,6 +31,14 @@ public class CheatPresenter implements CheatContract.Presenter {
         state.answerText = model.getEmptyAnswerText();
         //mediator.setCheatState(state);
 
+
+        // get the saved state from previous screen
+        QuestionToCheatState savedState = mediator.getQuestionToCheatState();
+        if (savedState != null) {
+
+            // update the current state
+            state.answer = savedState.answer;
+        }
     }
 
     @Override
@@ -84,6 +92,24 @@ public class CheatPresenter implements CheatContract.Presenter {
     public void yesButtonClicked() {
         Log.e(TAG, "yesButtonClicked");
 
+        // save the state to previous screen
+        saveStateToPreviousScreen(true);
+
+        // update the current state
+        if (state.answer) {
+            state.answerText = model.getTrueAnswerText();
+
+        } else {
+            state.answerText = model.getFalseAnswerText();
+        }
+
+        state.yesButton = false;
+        state.noButton = false;
+
+        // refresh the display with updated state
+        view.get().displayCheatData(state);
+
+        /*
         // get the saved state from previous screen
         QuestionToCheatState savedState = mediator.getQuestionToCheatState();
         if (savedState != null) {
@@ -114,6 +140,7 @@ public class CheatPresenter implements CheatContract.Presenter {
             // refresh the display with updated state
             view.get().displayCheatData(state);
         }
+        */
     }
 
     @Override
@@ -132,8 +159,8 @@ public class CheatPresenter implements CheatContract.Presenter {
     private void saveStateToPreviousScreen(boolean cheated) {
         Log.e(TAG, "saveStateToPreviousScreen");
 
-        CheatToQuestionState prevState = new CheatToQuestionState(cheated);
-        mediator.setCheatToQuestionState(prevState);
+        CheatToQuestionState newState = new CheatToQuestionState(cheated);
+        mediator.setCheatToQuestionState(newState);
     }
 
     @Override

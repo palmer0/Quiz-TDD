@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.test.core.app.ActivityScenario;
 
+import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,29 +30,6 @@ import es.ulpgc.eite.da.quiz.cheat.CheatActivity;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CheatActivityTests {
 
-
-    private String[] quizQuestions = {
-        "Christian Bale played Batman in 'The Dark Knight Rises'?", // 1
-        "The Gremlins movie was released in 1986?",  // 2
-        "Brad Pitt played Danny Ocean in Ocean's Eleven, Ocean's Twelve and Ocean's Thirteen?",  // 3
-        "A spoon full of sugar' came from the 1964 movie Mary Poppins?",  // 4
-//      "The song “I don't want to miss a thing” featured in Armageddon?", // 5
-//      "Will Smith has a son called Jaden?", // 6
-//      "Mark Ruffalo played Teddy Daniels in Shutter Island?", // 7
-//      "Mike Myers starred in the 'Cat in the Hat' 2003 children's movie?", // 8
-//      "Ryan Reynolds is married to Scarlett Johansson?", // 9
-//      "The movie 'White House Down' was released in 2014?",  // 10
-//      "Michael Douglas starred in Basic Instinct, Falling Down and The Game?", // 11
-//      "Colin Firth won an Oscar for his performance in the historical movie 'The King's Speech'?",  // 12
-//      "Cameron Diaz and Ashton Kutcher starred in the movie 'What happens in Vegas'?", // 13
-//      "Arnold Schwarzenegger played lead roles in Rocky, Rambo and Judge Dredd?", // 14
-//      "The Titanic movie featured the song 'My Heart Will Go On'?", // 15
-//      "Eddie Murphy narrates the voice of Donkey in the Shrek movies?", // 16
-//      "Nicole Kidman played Poison Ivy in 'Batman and Robin'?", // 17
-//      "The Lara Croft: Tomb Raider movie was released in 2003?", // 18
-//      "Hallie Berry played the character Rogue in X Men?", // 19
-        "The Teenage Mutant Ninja Turtles are named after famous artists?" // 20
-    };
 
     private boolean[] quizAnswers = {
         true, // 1
@@ -76,15 +54,21 @@ public class CheatActivityTests {
         true // 20
     };
 
+    /*
+    @Before
+    public void resetTest() {
+        AppMediator.resetInstance();
+    }
+    */
 
     @Test
     public void test01ActivityInitialization() {
 
-        ActivityScenario<CheatActivity> scenario =
-                ActivityScenario.launch(CheatActivity.class);
-
         QuestionToCheatState nextState = new QuestionToCheatState(quizAnswers[0]);
         AppMediator.getInstance().setQuestionToCheatState(nextState);
+
+        ActivityScenario<CheatActivity> scenario =
+                ActivityScenario.launch(CheatActivity.class);
 
         scenario.onActivity(activity -> {
             TextView answerTextView = activity.findViewById(R.id.answerField);
@@ -114,11 +98,13 @@ public class CheatActivityTests {
     @Test
     public void test02ShowAnswerTrue() {
 
+        QuestionToCheatState nextState =
+            new QuestionToCheatState(quizAnswers[0]); // true
+        AppMediator.getInstance().setQuestionToCheatState(nextState);
+
         ActivityScenario<CheatActivity> scenario =
                 ActivityScenario.launch(CheatActivity.class);
 
-        QuestionToCheatState nextState = new QuestionToCheatState(quizAnswers[0]);
-        AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         scenario.onActivity(activity -> {
             TextView answerTextView = activity.findViewById(R.id.answerField);
@@ -148,13 +134,14 @@ public class CheatActivityTests {
     }
 
     @Test
-    public void test02ShowAnswerFalse() {
+    public void test03ShowAnswerFalse() {
+
+        QuestionToCheatState nextState =
+            new QuestionToCheatState(quizAnswers[1]); // false
+        AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         ActivityScenario<CheatActivity> scenario =
                 ActivityScenario.launch(CheatActivity.class);
-
-        QuestionToCheatState nextState = new QuestionToCheatState(quizAnswers[1]);
-        AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         scenario.onActivity(activity -> {
             TextView answerTextView = activity.findViewById(R.id.answerField);
@@ -184,13 +171,14 @@ public class CheatActivityTests {
     }
 
     @Test
-    public void test03RotateScreen() {
+    public void test04RotateScreen() {
+
+        QuestionToCheatState nextState =
+            new QuestionToCheatState(quizAnswers[0]); // true
+        AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         ActivityScenario<CheatActivity> scenario =
                 ActivityScenario.launch(CheatActivity.class);
-
-        QuestionToCheatState nextState = new QuestionToCheatState(quizAnswers[0]);
-        AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         scenario.onActivity(activity -> {
             TextView answerTextView = activity.findViewById(R.id.answerField);
@@ -223,13 +211,14 @@ public class CheatActivityTests {
     }
 
     @Test
-    public void test04ReturnResultNo() {
+    public void test05ReturnResultNo() {
+
+        QuestionToCheatState nextState =
+            new QuestionToCheatState(quizAnswers[0]); // true
+        AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         ActivityScenario<CheatActivity> scenario =
                 ActivityScenario.launch(CheatActivity.class);
-
-        QuestionToCheatState nextState = new QuestionToCheatState(quizAnswers[0]);
-        AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         scenario.onActivity(activity -> {
             Button noButton = activity.findViewById(R.id.noButton);
@@ -246,9 +235,10 @@ public class CheatActivityTests {
 
 
     @Test
-    public void test05ReturnResultYes() {
+    public void test06ReturnResultYes() {
 
-        QuestionToCheatState nextState = new QuestionToCheatState(quizAnswers[0]);
+        QuestionToCheatState nextState =
+            new QuestionToCheatState(quizAnswers[0]); //  true
         AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         ActivityScenario<CheatActivity> scenario =
@@ -272,9 +262,10 @@ public class CheatActivityTests {
 
 
     @Test
-    public void test06BackPressed() {
+    public void test07BackPressed() {
 
-        QuestionToCheatState nextState = new QuestionToCheatState(quizAnswers[0]);
+        QuestionToCheatState nextState =
+            new QuestionToCheatState(quizAnswers[0]);  // true
         AppMediator.getInstance().setQuestionToCheatState(nextState);
 
         ActivityScenario<CheatActivity> scenario =

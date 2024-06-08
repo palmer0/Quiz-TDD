@@ -2,6 +2,7 @@ package es.ulpgc.eite.da.quiz.cheat;
 
 public class CheatState extends CheatViewModel {
 
+    public boolean answer;
     //public boolean cheated;
 
     /*

@@ -30,6 +30,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         state = new QuestionState();
         state.resultText = model.getEmptyResultText();
         //mediator.setQuestionState(state);
+
     }
 
     @Override
@@ -38,6 +39,10 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
         // restore the screen state
         state = mediator.getQuestionState();
+
+        // update the model
+        model.setCurrentIndex(state.quizIndex);
+
     }
 
     @Override
@@ -55,15 +60,13 @@ public class QuestionPresenter implements QuestionContract.Presenter {
             }
         }
 
-        // update the model
-        model.setCurrentIndex(state.quizIndex);
         // update the current state
         state.questionText = model.getCurrentQuestion();
 
         // refresh the display with updated state
         view.get().displayQuestionData(state);
-
     }
+
 
     @Override
     public void onPauseCalled() {
@@ -135,8 +138,8 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
         // save the state to next screen
         boolean answer = model.getCurrentAnswer();
-        QuestionToCheatState nextState = new QuestionToCheatState(answer);
-        mediator.setQuestionToCheatState(nextState);
+        QuestionToCheatState newState = new QuestionToCheatState(answer);
+        mediator.setQuestionToCheatState(newState);
 
         // navigate to next screen
         view.get().navigateToCheatScreen();
