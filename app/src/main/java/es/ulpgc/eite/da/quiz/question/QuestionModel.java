@@ -122,4 +122,8 @@ public class QuestionModel implements QuestionContract.Model {
         quizIndex = index;
     }
 
+    @Override
+    public int getCurrentIndex() {
+        return quizIndex;
+    }
 }

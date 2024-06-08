@@ -59,6 +59,8 @@ public interface QuestionContract {
         void incrQuizIndex();
 
         void setCurrentIndex(int index);
+
+        int getCurrentIndex();
     }
 
 }

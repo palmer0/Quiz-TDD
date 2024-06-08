@@ -151,8 +151,9 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
         // update the current state
 
-        state.quizIndex++;
+        //state.quizIndex++;
         model.incrQuizIndex();
+        state.quizIndex  = model.getCurrentIndex();
 
         state.questionText = model.getCurrentQuestion();
         state.resultText = model.getEmptyResultText();
