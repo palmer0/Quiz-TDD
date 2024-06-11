@@ -63,12 +63,6 @@ public class QuestionModel implements QuestionContract.Model {
 
 
     @Override
-    public void setEmptyResultText(String text) {
-        this.emptyResultText = text;
-    }
-
-
-    @Override
     public String getCorrectResultText() {
         return correctResultText;
     }
@@ -76,6 +70,12 @@ public class QuestionModel implements QuestionContract.Model {
     @Override
     public String getIncorrectResultText() {
         return incorrectResultText;
+    }
+
+
+    @Override
+    public void setEmptyResultText(String text) {
+        this.emptyResultText = text;
     }
 
     @Override

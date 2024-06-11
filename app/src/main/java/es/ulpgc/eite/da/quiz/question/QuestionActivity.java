@@ -28,25 +28,11 @@ public class QuestionActivity
         setContentView(R.layout.activity_question);
         setTitle(R.string.question_screen_title);
 
-
-        trueButton = findViewById(R.id.trueButton);
-        falseButton = findViewById(R.id.falseButton);
-        cheatButton = findViewById(R.id.cheatButton);
-        nextButton = findViewById(R.id.nextButton);
-        questionField = findViewById(R.id.questionField);
-        resultField = findViewById(R.id.resultField);
-
         Log.e(TAG, "onCreate");
 
-        trueButton.setText(getTrueButtonLabel());
-        falseButton.setText(getFalseButtonLabel());
-        cheatButton.setText(getCheatButtonLabel());
-        nextButton.setText(getNextButtonLabel());
-
-        trueButton.setOnClickListener(v -> presenter.trueButtonClicked());
-        falseButton.setOnClickListener(v -> presenter.falseButtonClicked());
-        cheatButton.setOnClickListener(v -> presenter.cheatButtonClicked());
-        nextButton.setOnClickListener(v -> presenter.nextButtonClicked());
+        linkLayoutComponents();
+        updateLayoutContent();
+        enableLayoutButtons();
 
         // do the setup
         QuestionScreen.configure(this);
@@ -58,6 +44,30 @@ public class QuestionActivity
         } else {
             presenter.onRecreateCalled();
         }
+    }
+
+    private void enableLayoutButtons() {
+
+        trueButton.setOnClickListener(v -> presenter.trueButtonClicked());
+        falseButton.setOnClickListener(v -> presenter.falseButtonClicked());
+        cheatButton.setOnClickListener(v -> presenter.cheatButtonClicked());
+        nextButton.setOnClickListener(v -> presenter.nextButtonClicked());
+    }
+
+    private void updateLayoutContent() {
+        trueButton.setText(getTrueButtonLabel());
+        falseButton.setText(getFalseButtonLabel());
+        cheatButton.setText(getCheatButtonLabel());
+        nextButton.setText(getNextButtonLabel());
+    }
+
+    private void linkLayoutComponents() {
+        trueButton = findViewById(R.id.trueButton);
+        falseButton = findViewById(R.id.falseButton);
+        cheatButton = findViewById(R.id.cheatButton);
+        nextButton = findViewById(R.id.nextButton);
+        questionField = findViewById(R.id.questionField);
+        resultField = findViewById(R.id.resultField);
     }
 
 

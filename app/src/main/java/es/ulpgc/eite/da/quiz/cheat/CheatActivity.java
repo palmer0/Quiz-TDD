@@ -26,19 +26,9 @@ public class CheatActivity
         setContentView(R.layout.activity_cheat);
         setTitle(R.string.cheat_screen_title);
 
-        yesButton = findViewById(R.id.yesButton);
-        noButton = findViewById(R.id.noButton);
-        confirmationField = findViewById(R.id.confirmationField);
-        answerField = findViewById(R.id.answerField);
-
-        yesButton.setText(getYesButtonLabel());
-        noButton.setText(getNoButtonLabel());
-        confirmationField.setText(getConfirmationButtonLabel());
-
-
-        yesButton.setOnClickListener(v -> presenter.yesButtonClicked());
-        noButton.setOnClickListener(v -> presenter.noButtonClicked());
-
+        linkLayoutComponents();
+        updateLayoutContent();
+        enableLayoutButtons();
 
         // do the setup
         CheatScreen.configure(this);
@@ -52,6 +42,25 @@ public class CheatActivity
         }
     }
 
+    private void linkLayoutComponents() {
+
+        yesButton = findViewById(R.id.yesButton);
+        noButton = findViewById(R.id.noButton);
+        confirmationField = findViewById(R.id.confirmationField);
+        answerField = findViewById(R.id.answerField);
+    }
+
+    private void updateLayoutContent() {
+        yesButton.setText(getYesButtonLabel());
+        noButton.setText(getNoButtonLabel());
+        confirmationField.setText(getConfirmationButtonLabel());
+    }
+
+    private void enableLayoutButtons() {
+
+        yesButton.setOnClickListener(v -> presenter.yesButtonClicked());
+        noButton.setOnClickListener(v -> presenter.noButtonClicked());
+    }
 
     @Override
     protected void onResume() {
