@@ -48,41 +48,6 @@ public class QuestionActivity
         cheatButton.setOnClickListener(v -> presenter.cheatButtonClicked());
         nextButton.setOnClickListener(v -> presenter.nextButtonClicked());
 
-
-    /*
-    trueButton.setOnClickListener(new View.OnClickListener() {
-
-      @Override
-      public void onClick(View v) {
-        presenter.trueButtonClicked();
-      }
-    });
-
-    falseButton.setOnClickListener(new View.OnClickListener() {
-
-      @Override
-      public void onClick(View v) {
-        presenter.falseButtonClicked();
-      }
-    });
-
-    cheatButton.setOnClickListener(new View.OnClickListener() {
-
-      @Override
-      public void onClick(View v) {
-        presenter.cheatButtonClicked();
-      }
-    });
-
-    nextButton.setOnClickListener(new View.OnClickListener() {
-
-      @Override
-      public void onClick(View v) {
-        presenter.nextButtonClicked();
-      }
-    });
-    */
-
         // do the setup
         QuestionScreen.configure(this);
 
@@ -143,46 +108,7 @@ public class QuestionActivity
         cheatButton.setEnabled(viewModel.cheatButton);
         nextButton.setEnabled(viewModel.nextButton);
 
-        /*
-        resultField.setText(getString(R.string.empty_text));
-
-        if (viewModel.nextButton || viewModel.isLastQuestion) {
-            resultField.setText(
-                viewModel.resultIsCorrect
-                    ? getCorrectResultText()
-                    : getIncorrectResultText()
-            );
-
-        }
-        */
-
-
-        /*
-        if (viewModel.isLastQuestion) {
-            trueButton.setEnabled(false);
-            falseButton.setEnabled(false);
-            cheatButton.setEnabled(false);
-            nextButton.setEnabled(false);
-
-        } else {
-            trueButton.setEnabled(!viewModel.nextButton);
-            falseButton.setEnabled(!viewModel.nextButton);
-            cheatButton.setEnabled(!viewModel.nextButton);
-            nextButton.setEnabled(viewModel.nextButton);
-        }
-        */
-
     }
-
-    /*
-    public String getCorrectResultText() {
-        return getString(R.string.correct_text);
-    }
-
-    public String getIncorrectResultText() {
-        return getString(R.string.incorrect_text);
-    }
-    */
 
     private String getCheatButtonLabel() {
         return getResources().getString(R.string.cheat_button_label);

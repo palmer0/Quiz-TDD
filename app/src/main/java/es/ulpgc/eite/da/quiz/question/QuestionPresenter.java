@@ -29,7 +29,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         // init the screen state
         state = new QuestionState();
         state.resultText = model.getEmptyResultText();
-        //mediator.setQuestionState(state);
 
     }
 
@@ -93,11 +92,9 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
         if (currentAnswer == userAnswer) {
             state.resultText = model.getCorrectResultText();
-            //state.resultIsCorrect = true;
 
         } else {
             state.resultText = model.getIncorrectResultText();
-            //state.resultIsCorrect = false;
         }
 
         state.falseButton = false;
@@ -106,11 +103,9 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
         if (model.isLastQuestion()) {
             state.nextButton = false;
-            //state.isLastQuestion = true;
 
         } else {
             state.nextButton = true;
-            //state.isLastQuestion = false;
         }
 
         // refresh the display with updated state
@@ -151,13 +146,11 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
         // update the current state
 
-        //state.quizIndex++;
         model.incrQuizIndex();
         state.quizIndex  = model.getCurrentIndex();
 
         state.questionText = model.getCurrentQuestion();
         state.resultText = model.getEmptyResultText();
-        //state.resultText = "";
 
         state.falseButton = true;
         state.trueButton = true;

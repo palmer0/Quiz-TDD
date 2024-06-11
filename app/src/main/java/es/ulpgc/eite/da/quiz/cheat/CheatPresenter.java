@@ -29,8 +29,6 @@ public class CheatPresenter implements CheatContract.Presenter {
         // init the screen state
         state = new CheatState();
         state.answerText = model.getEmptyAnswerText();
-        //mediator.setCheatState(state);
-
 
         // get the saved state from previous screen
         QuestionToCheatState savedState = mediator.getQuestionToCheatState();
@@ -61,14 +59,6 @@ public class CheatPresenter implements CheatContract.Presenter {
     public void onBackButtonPressed() {
         Log.e(TAG, "onBackButtonPressed");
 
-        //mediator.resetCheatToQuestionState();
-
-        /*if(state.cheated) {
-          state.cheated = false;
-
-          CheatToQuestionState newState = new CheatToQuestionState(true);
-          mediator.setCheatToQuestionState(newState);
-        }*/
     }
 
     @Override
@@ -109,38 +99,6 @@ public class CheatPresenter implements CheatContract.Presenter {
         // refresh the display with updated state
         view.get().displayCheatData(state);
 
-        /*
-        // get the saved state from previous screen
-        QuestionToCheatState savedState = mediator.getQuestionToCheatState();
-        if (savedState != null) {
-
-            //state.cheated = true;
-
-            // save the state to previous screen
-            saveStateToPreviousScreen(true);
-            //CheatToQuestionState prevState = new CheatToQuestionState(true);
-            //mediator.setCheatToQuestionState(prevState);
-
-            // update the current state
-
-            if (savedState.answer) {
-                state.answerText = model.getTrueAnswerText();
-
-            } else {
-                state.answerText = model.getFalseAnswerText();
-            }
-
-            //state.isAnswerTrue = savedState.answer;
-            //state.isAnswerShown = true;
-            //state.cheatButtons = false;
-
-            state.yesButton = false;
-            state.noButton = false;
-
-            // refresh the display with updated state
-            view.get().displayCheatData(state);
-        }
-        */
     }
 
     @Override
@@ -149,8 +107,6 @@ public class CheatPresenter implements CheatContract.Presenter {
 
         // save the state to previous screen
         saveStateToPreviousScreen(false);
-        //CheatToQuestionState prevState = new CheatToQuestionState(false);
-        //mediator.setCheatToQuestionState(prevState);
 
         // finish the current screen
         view.get().finishView();

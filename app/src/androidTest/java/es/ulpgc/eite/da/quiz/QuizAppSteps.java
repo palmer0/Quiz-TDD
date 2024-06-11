@@ -113,18 +113,6 @@ public class QuizAppSteps {
     onView(withId(R.id.nextButton)).check(matches(not(isEnabled())));
   }
 
-  /*
-  public void pulsarBoton(int button) {
-
-    onView(withId(button)).check(matches(isCompletelyDisplayed()));
-    onView(withId(button)).perform(click());
-
-    try {
-      Thread.sleep(DELAY_IN_SECS);
-    } catch (InterruptedException e) {
-    }
-  }
-  */
 
   public void pulsarBotonTrue() {
 
@@ -203,7 +191,6 @@ public class QuizAppSteps {
 
 
   public void iniciarPantallaCheat() {
-    //getInstrumentation().waitForIdleSync();
 
     try {
       Thread.sleep(DELAY_IN_SECS);
@@ -259,7 +246,6 @@ public class QuizAppSteps {
     } catch (InterruptedException e) {
     }
 
-    //getInstrumentation().waitForIdleSync();
     pressBack();
   }
 
