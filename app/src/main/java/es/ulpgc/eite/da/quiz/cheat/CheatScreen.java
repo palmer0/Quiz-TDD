@@ -21,9 +21,8 @@ public class CheatScreen {
         AppMediator mediator = AppMediator.getInstance();
         CheatContract.Presenter presenter = new CheatPresenter(mediator);
 
-        //CheatModel model = new CheatModel();
-        CheatModel model =
-            new CheatModel(context.get().getString(R.string.empty_text));
+        CheatModel model = new CheatModel();
+        model.setEmptyAnswerText(context.get().getString(R.string.empty_text));
         model.setTrueAnswerText(context.get().getString(R.string.true_text));
         model.setFalseAnswerText(context.get().getString(R.string.false_text));
 

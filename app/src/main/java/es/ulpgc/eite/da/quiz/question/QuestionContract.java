@@ -42,6 +42,8 @@ public interface QuestionContract {
 
         String getEmptyResultText();
 
+        void setEmptyResultText(String text);
+
         String getCorrectResultText();
 
         String getIncorrectResultText();

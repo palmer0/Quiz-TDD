@@ -11,20 +11,16 @@ public class CheatModel implements CheatContract.Model {
     private String emptyAnswerText;
 
 
-    public CheatModel(String emptyText) {
-        emptyAnswerText=emptyText;
-    }
-
     @Override
     public String getEmptyAnswerText() {
         return emptyAnswerText;
     }
 
-    /*
-    public void setEmptyAnswerText(String emptyText) {
-        this.emptyAnswerText = emptyText;
+    @Override
+    public void setEmptyAnswerText(String text) {
+        this.emptyAnswerText = text;
     }
-    */
+
 
     @Override
     public String getFalseAnswerText() {

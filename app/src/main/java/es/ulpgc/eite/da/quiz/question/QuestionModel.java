@@ -55,21 +55,18 @@ public class QuestionModel implements QuestionContract.Model {
     private String correctResultText, incorrectResultText;
     private String emptyResultText;
 
-    public QuestionModel(String emptyText) {
-        emptyResultText=emptyText;
-    }
 
     @Override
     public String getEmptyResultText() {
         return emptyResultText;
     }
 
-    /*
+
     @Override
-    public void setEmptyResultText(String emptyResultText) {
-        this.emptyResultText = emptyResultText;
+    public void setEmptyResultText(String text) {
+        this.emptyResultText = text;
     }
-    */
+
 
     @Override
     public String getCorrectResultText() {
