@@ -29,7 +29,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
         // init the screen state
         state = new QuestionState();
         state.resultText = model.getEmptyResultText();
-
+        state.questionText = model.getCurrentQuestion();
     }
 
     @Override
@@ -58,9 +58,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
                 return;
             }
         }
-
-        // update the current state
-        state.questionText = model.getCurrentQuestion();
 
         // refresh the display with updated state
         view.get().displayQuestionData(state);
