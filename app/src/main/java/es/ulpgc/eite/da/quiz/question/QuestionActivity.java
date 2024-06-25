@@ -32,7 +32,7 @@ public class QuestionActivity
 
         linkLayoutComponents();
         updateLayoutContent();
-        enableLayoutButtons();
+        initLayoutButtons();
 
         // do the setup
         QuestionScreen.configure(this);
@@ -46,7 +46,7 @@ public class QuestionActivity
         }
     }
 
-    private void enableLayoutButtons() {
+    private void initLayoutButtons() {
 
         trueButton.setOnClickListener(v -> presenter.trueButtonClicked());
         falseButton.setOnClickListener(v -> presenter.falseButtonClicked());

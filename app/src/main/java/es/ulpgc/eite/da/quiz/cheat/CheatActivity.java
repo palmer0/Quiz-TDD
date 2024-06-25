@@ -28,7 +28,7 @@ public class CheatActivity
 
         linkLayoutComponents();
         updateLayoutContent();
-        enableLayoutButtons();
+        initLayoutButtons();
 
         // do the setup
         CheatScreen.configure(this);
@@ -56,7 +56,7 @@ public class CheatActivity
         confirmationField.setText(getConfirmationButtonLabel());
     }
 
-    private void enableLayoutButtons() {
+    private void initLayoutButtons() {
 
         yesButton.setOnClickListener(v -> presenter.yesButtonClicked());
         noButton.setOnClickListener(v -> presenter.noButtonClicked());
