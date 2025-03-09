@@ -91,7 +91,7 @@ public class QuestionModel implements QuestionContract.Model {
 
     @Override
     public String getCurrentQuestion() {
-        return quizQuestions[quizIndex];
+        return quizQuestions[quizIndex]; // 5th call => ArrayIndexOutOfBoundsException !
     }
 
     @Override

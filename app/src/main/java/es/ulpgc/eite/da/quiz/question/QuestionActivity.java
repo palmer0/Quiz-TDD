@@ -77,7 +77,7 @@ public class QuestionActivity
         //Log.e(TAG, "onResume");
 
         // do some work
-        presenter.onResumeCalled();
+        presenter.onResumeCalled(); // 1st call
     }
 
 

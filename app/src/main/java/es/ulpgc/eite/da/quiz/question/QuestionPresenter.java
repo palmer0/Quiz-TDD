@@ -54,7 +54,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
             // update the current state
             if (savedState.cheated) {
-                nextButtonClicked();
+                nextButtonClicked(); // 2nd call
                 return;
             }
         }
@@ -143,10 +143,10 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
         // update the current state
 
-        model.incrQuizIndex();
+        model.incrQuizIndex();  // 3rd call => quizIndex = quizQuestions.length
         state.quizIndex  = model.getCurrentIndex();
 
-        state.questionText = model.getCurrentQuestion();
+        state.questionText = model.getCurrentQuestion(); // 4th call
         state.resultText = model.getEmptyResultText();
 
         state.falseButton = true;

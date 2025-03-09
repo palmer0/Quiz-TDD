@@ -279,6 +279,10 @@ public class NewQuizAppTests {
                 "The Teenage Mutant Ninja Turtles are named after famous artists?"
             )));
 
+        // Verificar que el resultado sigue vacio
+        onView(ViewMatchers.withId(R.id.resultField))
+            .check(ViewAssertions.matches(ViewMatchers.withText("")));
+
         // Verificar que los botones de respuesta están deshabilitados
         // después de ver la  respuesta
         onView(ViewMatchers.withId(R.id.trueButton))
